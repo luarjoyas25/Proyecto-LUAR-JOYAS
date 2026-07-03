@@ -31,7 +31,7 @@ function tarjetaProducto(p) {
 
   articulo.innerHTML =
     '<div class="producto__marco">' +
-      '<img src="img/productos/' + p.imagen + '" alt="' + p.nombre + ' — LUAR JOYAS" loading="lazy">' +
+      '<img src="img/productos/' + p.imagen + '" alt="' + p.nombre + ' — LUAR JOYAS">' +
     '</div>' +
     '<div class="producto__linea">' + nombreLinea(p.linea) + '</div>' +
     '<h3 class="producto__nombre">' + p.nombre + '</h3>' +
@@ -63,9 +63,9 @@ function iniciarCatalogo() {
   var filtroCategoria = "todas";
   var filtroLinea = "todas";
 
-  // Si la URL trae ?categoria=anillos, arranca filtrado
-  var parametros = new URLSearchParams(location.search);
-  var inicial = parametros.get("categoria");
+  // Si la URL trae #anillos (o ?categoria=anillos), arranca filtrado
+  var inicial = location.hash.replace("#", "") ||
+                new URLSearchParams(location.search).get("categoria");
   if (inicial && CATEGORIAS.some(function (c) { return c.clave === inicial; })) {
     filtroCategoria = inicial;
   }
@@ -134,7 +134,7 @@ function iniciarCategoriasInicio() {
   CATEGORIAS.forEach(function (c, i) {
     var enlace = document.createElement("a");
     enlace.className = "categoria revela";
-    enlace.href = "catalogo.html?categoria=" + c.clave;
+    enlace.href = "catalogo.html#" + c.clave;
     enlace.innerHTML =
       '<span class="categoria__numero">' + ROMANOS[i] + '</span>' +
       '<span class="categoria__nombre">' + c.nombre + '</span>' +
@@ -185,10 +185,11 @@ function iniciarBase() {
     });
   }
 
-  // marcar la página actual en el menú
-  var actual = location.pathname.split("/").pop() || "index.html";
+  // marcar la página actual en el menú (funciona con /faq y con faq.html)
+  var actual = (location.pathname.split("/").pop() || "index").replace(".html", "");
   document.querySelectorAll(".navegacion a").forEach(function (a) {
-    if (a.getAttribute("href") === actual) a.classList.add("activo");
+    var destino = a.getAttribute("href").replace(".html", "");
+    if (destino === actual) a.classList.add("activo");
   });
 
   // enlaces de WhatsApp generales (botón flotante y pie)
