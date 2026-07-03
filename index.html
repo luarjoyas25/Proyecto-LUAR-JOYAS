@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LUAR JOYAS — Alta joyería hecha a mano en Bogotá</title>
+  <meta name="description" content="LUAR JOYAS: alta joyería y piezas en oro, metales y piedras preciosas, elaboradas en Bogotá con envíos a toda Colombia.">
+
+  <!-- ============================================
+       GOOGLE ANALYTICS
+       Cuando se cree la propiedad de Analytics,
+       reemplazar G-XXXXXXXXXX por el ID real
+       y quitar los signos de comentario <?- y ->
+       ============================================
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <div class="aviso">Envíos asegurados a toda Colombia · Piezas elaboradas en <em>Bogotá</em></div>
+
+  <header class="cabecera">
+    <div class="cabecera__interior">
+      <a href="index.html" class="marca">
+        <span class="marca__nombre">LUAR</span>
+        <span class="marca__bajada">Joyas · Bogotá</span>
+      </a>
+      <nav class="navegacion">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="galeria.html">Galería</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="faq.html">Preguntas</a>
+      </nav>
+      <button class="boton-menu" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ PORTADA ============
+         Cuando el cliente envíe su video, descomentar el bloque
+         <video> y guardar el archivo como  img/portada.mp4
+    -->
+    <section class="hero">
+      <div class="hero__fondo"></div>
+      <!--
+      <video autoplay muted loop playsinline poster="img/portada.jpg">
+        <source src="img/portada.mp4" type="video/mp4">
+      </video>
+      -->
+      <div class="hero__contenido">
+        <p class="hero__eyebrow">Alta joyería · Bogotá, Colombia</p>
+        <h1>LUAR<span class="fina">El oro guarda memoria</span></h1>
+        <div class="hero__linea"></div>
+        <a href="catalogo.html" class="hero__cta">Descubrir el catálogo</a>
+      </div>
+      <div class="hero__scroll">Descienda</div>
+    </section>
+
+    <!-- ============ MANIFIESTO ============ -->
+    <div class="contenedor">
+      <div class="manifiesto revela">
+        <span>Hecho a mano en Bogotá</span>
+        <i></i>
+        <span>Oro, metales y piedras preciosas</span>
+        <i></i>
+        <span>Envíos a toda Colombia</span>
+      </div>
+    </div>
+
+    <!-- ============ CATEGORÍAS ============ -->
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="seccion__cabeza revela">
+          <p class="etiqueta etiqueta--oro">El catálogo</p>
+          <h2 class="titulo">Seis formas de llevar el oro</h2>
+        </div>
+        <div class="categorias" id="rejilla-categorias"></div>
+      </div>
+    </section>
+
+    <!-- ============ DOS LÍNEAS ============ -->
+    <section class="lineas">
+      <div class="lineas__panel lineas__panel--negro revela">
+        <p class="etiqueta">Hecha a mano</p>
+        <h3>Alta Joyería</h3>
+        <p>Piezas únicas concebidas y elaboradas a mano por nuestros orfebres. Cada joya nace de un trazo, se levanta en metal precioso y se termina pieza por pieza. El tiempo es parte del material.</p>
+        <a class="enlace-sutil" href="catalogo.html">Ver piezas de autor</a>
+      </div>
+      <div class="lineas__panel lineas__panel--blanco revela revela--2">
+        <p class="etiqueta etiqueta--oro">Línea de la casa</p>
+        <h3 data-nombre-atelier>Colección Atelier</h3>
+        <p>El diseño de la casa en una línea de producción precisa: los mismos metales, el mismo criterio, en piezas pensadas para acompañar todos los días.</p>
+        <a class="enlace-sutil" href="catalogo.html">Explorar la colección</a>
+      </div>
+    </section>
+
+    <!-- ============ DESTACADOS ============ -->
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="seccion__cabeza seccion__cabeza--centro revela">
+          <p class="etiqueta etiqueta--oro">Selección</p>
+          <h2 class="titulo">Piezas destacadas</h2>
+        </div>
+        <div class="rejilla-productos" id="rejilla-destacados"></div>
+      </div>
+    </section>
+
+    <!-- ============ CITA ============ -->
+    <section class="cita">
+      <blockquote class="revela">
+        «Una joya bien hecha no acompaña un momento:<br>lo guarda para siempre.»
+        <cite>LUAR JOYAS · Bogotá</cite>
+      </blockquote>
+    </section>
+
+    <!-- ============ TESTIMONIOS ============
+         Espacio preparado. Cuando el cliente tenga reseñas reales,
+         descomentar este bloque y reemplazar los textos.
+
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="seccion__cabeza seccion__cabeza--centro revela">
+          <p class="etiqueta etiqueta--oro">Clientes</p>
+          <h2 class="titulo">Lo que dicen de nosotros</h2>
+        </div>
+        <div class="valores">
+          <div class="revela"><p>"Testimonio del cliente aquí."</p><h4>— Nombre, Ciudad</h4></div>
+          <div class="revela revela--2"><p>"Testimonio del cliente aquí."</p><h4>— Nombre, Ciudad</h4></div>
+          <div class="revela revela--3"><p>"Testimonio del cliente aquí."</p><h4>— Nombre, Ciudad</h4></div>
+        </div>
+      </div>
+    </section>
+    -->
+
+  </main>
+
+  <!-- ============ PIE DE PÁGINA ============ -->
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__rejilla">
+        <div>
+          <div class="marca">
+            <span class="marca__nombre">LUAR</span>
+            <span class="marca__bajada">Joyas · Bogotá</span>
+          </div>
+          <p class="pie__lema">Comercialización y fabricación de joyas, metales y piedras preciosas. Desde Bogotá para toda Colombia.</p>
+        </div>
+        <div>
+          <h5>Explorar</h5>
+          <ul>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Ayuda</h5>
+          <ul>
+            <li><a href="faq.html">Preguntas frecuentes</a></li>
+            <li><a data-wsp-general href="#" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></li>
+          </ul>
+        </div>
+        <div class="pie__contacto">
+          <div><small>WhatsApp</small><a data-wsp-general href="#" target="_blank" rel="noopener">+57 302 289 4500</a></div>
+          <div><small>Correo</small><a data-correo href="#"></a></div>
+          <div><small>Taller</small><span>Bogotá, Colombia</span></div>
+        </div>
+      </div>
+      <div class="pie__final">
+        <span>© 2026 LUAR JOYAS · Todos los derechos reservados</span>
+        <span>Bogotá, Colombia</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wsp-flotante" data-wsp-general href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.8a12 12 0 0 0 4.6 4.2c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0 0-.2-.1-.4-.1Z"/></svg>
+  </a>
+
+  <script src="js/productos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
