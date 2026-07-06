@@ -47,8 +47,11 @@ const CONFIG = {
   // Puedes resaltar una palabra en dorado escribiéndola entre <em> y </em>
   textoAviso: "Envíos asegurados a toda Colombia · Piezas elaboradas a <em>mano</em>",
 
-  // Frase del pie de página (aparece en TODAS las páginas)
-  lemaPie: "Comercialización y fabricación de joyas, metales y piedras preciosas, para toda Colombia.",
+  // Slogan de la marca (aparece en la portada bajo el logo y en el pie)
+  slogan: "El legado que llevarás contigo",
+
+  // Frase larga que refuerza el slogan (aparece en el pie y en meta descripciones)
+  lemaPie: "Joyas que transforman momentos en recuerdos eternos. Fabricación y comercialización desde Bogotá, para toda Colombia.",
 };
 
 const PRODUCTOS = [

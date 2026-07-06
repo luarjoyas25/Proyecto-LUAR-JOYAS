@@ -220,6 +220,9 @@ function iniciarBase() {
   document.querySelectorAll(".pie__lema").forEach(function (el) {
     if (CONFIG.lemaPie) el.textContent = CONFIG.lemaPie;
   });
+  document.querySelectorAll("[data-slogan]").forEach(function (el) {
+    if (CONFIG.slogan) el.textContent = CONFIG.slogan;
+  });
 
   // sombra de la cabecera al hacer scroll
   var cabecera = document.querySelector(".cabecera");

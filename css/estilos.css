@@ -141,20 +141,10 @@ button { font-family: inherit; cursor: pointer; }
   gap: 24px;
 }
 
-.marca { display: flex; flex-direction: column; align-items: center; line-height: 1; }
-.marca__nombre {
-  font-family: var(--serif);
-  font-size: 27px;
-  letter-spacing: .5em;
-  padding-left: .5em; /* compensa el letter-spacing final */
-}
-.marca__bajada {
-  font-size: 9.5px;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-  color: var(--oro);
-  margin-top: 5px;
-}
+.marca { display: flex; align-items: center; line-height: 1; }
+.marca__logo { height: 56px; width: auto; display: block; }
+/* En el pie el fondo es negro y el logo es negro: se invierte a blanco */
+.pie .marca__logo { filter: invert(1) brightness(1.05); height: 68px; }
 
 .navegacion { display: flex; gap: clamp(18px, 3vw, 42px); }
 .navegacion a {
@@ -776,9 +766,15 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 900px) { .pie__rejilla { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .pie__rejilla { grid-template-columns: 1fr; } }
 
-.pie .marca__nombre { color: var(--marfil); font-size: 30px; }
-.pie .marca__bajada { color: var(--oro-claro); }
-.pie__lema { margin-top: 22px; font-size: 13.5px; line-height: 1.8; max-width: 300px; color: rgba(251,250,246,.72); }
+.pie__slogan {
+  margin-top: 18px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--oro-claro);
+  line-height: 1.4;
+}
+.pie__lema { margin-top: 14px; font-size: 13.5px; line-height: 1.8; max-width: 320px; color: rgba(251,250,246,.72); }
 
 .pie h5 {
   font-size: 10.5px;
