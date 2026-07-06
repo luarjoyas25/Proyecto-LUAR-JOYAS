@@ -3,31 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galería — LUAR JOYAS</title>
+  <title>LUAR JOYAS-Galería</title>
   <meta name="description" content="Galería de LUAR JOYAS: el oficio, el taller y las piezas de la casa en imágenes.">
+  <meta property="og:title" content="LUAR JOYAS — Galería">
+  <meta property="og:description" content="El oficio, el taller y las piezas de la casa en imágenes.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:site_name" content="LUAR JOYAS">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23131110'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23CBB273' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilos.css">
-  <style>
-    /* espacios elegantes mientras llegan las fotos de la galería */
-    .galeria__pendiente {
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-      background: radial-gradient(ellipse 90% 70% at 50% 35%, rgba(169,133,60,.10), transparent 70%), var(--marfil-alto);
-    }
-    .galeria__pendiente b { font-family: var(--serif); font-weight: 400; font-size: 30px; color: rgba(19,17,16,.28); }
-    .galeria__pendiente span { font-size: 8.5px; letter-spacing: .3em; text-transform: uppercase; color: rgba(19,17,16,.35); }
-  </style>
 </head>
 <body>
 
-  <div class="aviso">Envíos asegurados a toda Colombia · Piezas elaboradas en <em>Bogotá</em></div>
+  <div class="aviso">Envíos asegurados a toda Colombia - Piezas elaboradas a <em>Mano</em></div>
 
   <header class="cabecera">
     <div class="cabecera__interior">
       <a href="index.html" class="marca">
         <span class="marca__nombre">LUAR</span>
-        <span class="marca__bajada">Joyas · Bogotá</span>
+        <span class="marca__bajada">Joyas</span>
       </a>
       <nav class="navegacion">
         <a href="index.html">Inicio</a>
@@ -65,9 +62,9 @@
         <div>
           <div class="marca">
             <span class="marca__nombre">LUAR</span>
-            <span class="marca__bajada">Joyas · Bogotá</span>
+            <span class="marca__bajada">Joyas</span>
           </div>
-          <p class="pie__lema">Comercialización y fabricación de joyas, metales y piedras preciosas. Desde Bogotá para toda Colombia.</p>
+          <p class="pie__lema">Comercialización y fabricación de joyas, metales y piedras preciosas, para toda Colombia.</p>
         </div>
         <div>
           <h5>Explorar</h5>
@@ -92,7 +89,6 @@
       </div>
       <div class="pie__final">
         <span>© 2026 LUAR JOYAS · Todos los derechos reservados</span>
-        <span>Bogotá, Colombia</span>
       </div>
     </div>
   </footer>
@@ -103,31 +99,5 @@
 
   <script src="js/productos.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    // Pinta la galería: intenta cargar galeria-01.jpg … galeria-12.jpg.
-    // Si una foto no existe, muestra el espacio elegante en su lugar.
-    (function () {
-      var rejilla = document.getElementById("rejilla-galeria");
-      var proporciones = ["3/4", "1/1", "4/5", "1/1", "3/4", "4/5", "1/1", "3/4", "4/5", "1/1", "3/4", "4/5"];
-      for (var i = 1; i <= 12; i++) {
-        (function (n) {
-          var figura = document.createElement("figure");
-          var numero = (n < 10 ? "0" : "") + n;
-          var img = document.createElement("img");
-          img.src = "img/galeria/galeria-" + numero + ".jpg";
-          img.alt = "LUAR JOYAS — galería " + numero;
-          img.loading = "lazy";
-          img.addEventListener("error", function () {
-            img.remove();
-            figura.style.aspectRatio = proporciones[n - 1];
-            figura.innerHTML = '<div class="galeria__pendiente" style="position:absolute;inset:0"><b>L</b><span>Imagen ' + numero + '</span></div>';
-            figura.style.position = "relative";
-          });
-          figura.appendChild(img);
-          rejilla.appendChild(figura);
-        })(i);
-      }
-    })();
-  </script>
 </body>
 </html>

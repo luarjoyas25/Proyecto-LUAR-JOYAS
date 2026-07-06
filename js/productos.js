@@ -42,6 +42,13 @@ const CONFIG = {
 
   // Nombre de la línea hecha a mano
   nombreLineaAlta: "Alta Joyería",
+
+  // Texto de la franja negra superior (aparece en TODAS las páginas).
+  // Puedes resaltar una palabra en dorado escribiéndola entre <em> y </em>
+  textoAviso: "Envíos asegurados a toda Colombia · Piezas elaboradas a <em>mano</em>",
+
+  // Frase del pie de página (aparece en TODAS las páginas)
+  lemaPie: "Comercialización y fabricación de joyas, metales y piedras preciosas, para toda Colombia.",
 };
 
 const PRODUCTOS = [
@@ -97,4 +104,49 @@ const CATEGORIAS = [
   { clave: "topos",     nombre: "Topos" },
   { clave: "dijes",     nombre: "Dijes" },
   { clave: "pulsos",    nombre: "Pulsos" },
+];
+
+/* ============================================================
+   PREGUNTAS FRECUENTES (página faq.html)
+   Para editar: cambia el texto de "pregunta" o "respuesta".
+   Para agregar una: copia un bloque { pregunta: ..., respuesta: ... },
+   completo (incluida la coma) y cambia los textos.
+   ============================================================ */
+const PREGUNTAS = [
+  {
+    pregunta: "¿En qué materiales están hechas sus joyas?",
+    respuesta: "Trabajamos principalmente en oro de 18k en sus distintos tonos, plata 950 y piedras preciosas seleccionadas, incluida la esmeralda colombiana. (Respuesta provisional — pendiente confirmación del cliente.)",
+  },
+  {
+    pregunta: "¿Cuál es la diferencia entre la Alta Joyería y la línea de la casa?",
+    respuesta: "La Alta Joyería reúne piezas concebidas y elaboradas a mano, una a una, por nuestros orfebres. La línea de la casa lleva el mismo diseño y los mismos materiales a piezas de producción precisa, con precios más accesibles. (Respuesta provisional.)",
+  },
+  {
+    pregunta: "¿Cómo sé cuál es mi talla de anillo?",
+    respuesta: "Escríbenos por WhatsApp y te guiamos paso a paso para medir tu talla desde casa. (Respuesta provisional.)",
+  },
+  {
+    pregunta: "¿Hacen piezas personalizadas o a la medida?",
+    respuesta: "Sí. Realizamos encargos y diseños a medida. Cuéntanos tu idea por WhatsApp y te indicamos tiempos y valores. (Respuesta provisional.)",
+  },
+  {
+    pregunta: "¿Hacen envíos a todo el país? ¿Cuánto demoran?",
+    respuesta: "Enviamos de forma asegurada a toda Colombia. Los tiempos varían según la ciudad de destino. (Respuesta provisional — pendiente transportadora y tiempos.)",
+  },
+  {
+    pregunta: "¿Qué métodos de pago aceptan?",
+    respuesta: "(Respuesta pendiente del cliente: transferencia, efectivo, Nequi/Daviplata, etc.)",
+  },
+  {
+    pregunta: "¿Las joyas tienen garantía?",
+    respuesta: "(Respuesta pendiente del cliente: tiempo de garantía y qué cubre.)",
+  },
+  {
+    pregunta: "¿Cómo debo cuidar mis joyas?",
+    respuesta: "Evita el contacto con perfumes, cloro y químicos; guarda cada pieza por separado en un lugar seco. Con cada joya entregamos recomendaciones de cuidado. (Respuesta provisional.)",
+  },
+  {
+    pregunta: "¿Cómo hago un pedido?",
+    respuesta: "Elige la pieza en el catálogo, pulsa «Consultar» y te atendemos directamente por WhatsApp para coordinar pago y envío.",
+  },
 ];

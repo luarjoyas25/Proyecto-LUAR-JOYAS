@@ -4,6 +4,10 @@
    Los productos y datos de contacto se editan en js/productos.js
    ============================================================ */
 
+/* Marca que JavaScript está activo: las animaciones de aparición
+   solo ocultan contenido cuando este archivo cargó correctamente */
+document.documentElement.classList.add("js");
+
 /* ---------- utilidades ---------- */
 
 function formatearPrecio(numero) {
@@ -82,6 +86,8 @@ function iniciarCatalogo() {
       filtroCategoria = c.clave;
       contenedorFiltros.querySelectorAll("button").forEach(function (b) { b.classList.remove("activo"); });
       boton.classList.add("activo");
+      // guarda el filtro en la URL para que sobreviva al recargar o compartir
+      history.replaceState(null, "", c.clave === "todas" ? location.pathname : "#" + c.clave);
       pintar();
     });
     contenedorFiltros.appendChild(boton);
@@ -138,9 +144,52 @@ function iniciarCategoriasInicio() {
     enlace.innerHTML =
       '<span class="categoria__numero">' + ROMANOS[i] + '</span>' +
       '<span class="categoria__nombre">' + c.nombre + '</span>' +
-      '<span class="categoria__flecha">→</span>';
+      '<span class="categoria__flecha"></span>';
     rejilla.appendChild(enlace);
   });
+}
+
+/* ---------- preguntas frecuentes (se editan en productos.js) ---------- */
+
+function iniciarFaq() {
+  var lista = document.getElementById("lista-faq");
+  if (!lista || typeof PREGUNTAS === "undefined") return;
+  PREGUNTAS.forEach(function (item) {
+    var bloque = document.createElement("details");
+    var titulo = document.createElement("summary");
+    titulo.textContent = item.pregunta;
+    var cuerpo = document.createElement("div");
+    cuerpo.className = "respuesta";
+    cuerpo.textContent = item.respuesta;
+    bloque.appendChild(titulo);
+    bloque.appendChild(cuerpo);
+    lista.appendChild(bloque);
+  });
+}
+
+/* ---------- galería (fotos en img/galeria/galeria-01.jpg …) ---------- */
+
+function iniciarGaleria() {
+  var rejilla = document.getElementById("rejilla-galeria");
+  if (!rejilla) return;
+  var proporciones = ["3/4", "1/1", "4/5", "1/1", "3/4", "4/5", "1/1", "3/4", "4/5", "1/1", "3/4", "4/5"];
+  for (var i = 1; i <= 12; i++) {
+    (function (n) {
+      var figura = document.createElement("figure");
+      var numero = (n < 10 ? "0" : "") + n;
+      var img = document.createElement("img");
+      img.src = "img/galeria/galeria-" + numero + ".jpg";
+      img.alt = "LUAR JOYAS — galería " + numero;
+      img.addEventListener("error", function () {
+        img.remove();
+        figura.style.aspectRatio = proporciones[n - 1];
+        figura.style.position = "relative";
+        figura.innerHTML = '<div class="galeria__pendiente"><b>L</b><span>Imagen ' + numero + '</span></div>';
+      });
+      figura.appendChild(img);
+      rejilla.appendChild(figura);
+    })(i);
+  }
 }
 
 /* ---------- animación de aparición al hacer scroll ---------- */
@@ -163,6 +212,15 @@ function observarReveles() {
 /* ---------- cabecera, menú móvil y enlaces globales ---------- */
 
 function iniciarBase() {
+  // franja superior y lema del pie: se escriben una sola vez en
+  // CONFIG (js/productos.js) y aparecen en todas las páginas
+  document.querySelectorAll(".aviso").forEach(function (el) {
+    if (CONFIG.textoAviso) el.innerHTML = CONFIG.textoAviso;
+  });
+  document.querySelectorAll(".pie__lema").forEach(function (el) {
+    if (CONFIG.lemaPie) el.textContent = CONFIG.lemaPie;
+  });
+
   // sombra de la cabecera al hacer scroll
   var cabecera = document.querySelector(".cabecera");
   window.addEventListener("scroll", function () {
@@ -216,5 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
   iniciarCategoriasInicio();
   iniciarDestacados();
   iniciarCatalogo();
+  iniciarFaq();
+  iniciarGaleria();
   observarReveles();
 });

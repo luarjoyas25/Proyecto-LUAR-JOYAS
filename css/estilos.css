@@ -9,8 +9,9 @@
   --marfil-alto: #F4F1E9;   /* paneles suaves */
   --tinta:       #131110;   /* negro cálido */
   --tinta-suave: #3E3A35;   /* texto secundario */
-  --gris:        #8B857A;   /* etiquetas */
-  --oro:         #A9853C;   /* acento principal */
+  --gris:        #6E6858;   /* etiquetas y textos secundarios (legible sobre marfil) */
+  --oro:         #A9853C;   /* acento decorativo: líneas, bordes, adornos */
+  --oro-texto:   #8A6A28;   /* dorado profundo SOLO para texto pequeño sobre marfil */
   --oro-claro:   #CBB273;   /* acento sobre negro */
   --linea:       rgba(19, 17, 16, .14);
   --linea-oro:   rgba(169, 133, 60, .45);
@@ -51,7 +52,20 @@ button { font-family: inherit; cursor: pointer; }
   text-transform: uppercase;
   color: var(--gris);
 }
-.etiqueta--oro { color: var(--oro); }
+.etiqueta--oro { color: var(--oro-texto); }
+
+/* foco visible al navegar con teclado */
+:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
+
+/* respeta la preferencia del sistema de reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
 
 .titulo {
   font-family: var(--serif);
@@ -68,12 +82,14 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ---------- animaciones de revelado ---------- */
 
-.revela {
+/* solo se oculta contenido si JavaScript cargó (clase .js en <html>);
+   así la web nunca queda en blanco si un script falla */
+.js .revela {
   opacity: 0;
   transform: translateY(26px);
   transition: opacity .9s cubic-bezier(.22,.61,.21,1), transform .9s cubic-bezier(.22,.61,.21,1);
 }
-.revela.visible { opacity: 1; transform: none; }
+.js .revela.visible { opacity: 1; transform: none; }
 .revela--2 { transition-delay: .12s; }
 .revela--3 { transition-delay: .24s; }
 .revela--4 { transition-delay: .36s; }
@@ -101,10 +117,16 @@ button { font-family: inherit; cursor: pointer; }
   position: sticky;
   top: 0;
   z-index: 90;
-  background: rgba(251, 250, 246, .92);
-  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--linea);
   transition: box-shadow var(--transicion);
+}
+.cabecera::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(251, 250, 246, .92);
+  backdrop-filter: blur(12px);
 }
 .cabecera.con-sombra { box-shadow: 0 10px 40px -18px rgba(19,17,16,.25); }
 
@@ -119,7 +141,7 @@ button { font-family: inherit; cursor: pointer; }
   gap: 24px;
 }
 
-.marca { display: flex; flex-direction: column; line-height: 1; }
+.marca { display: flex; flex-direction: column; align-items: center; line-height: 1; }
 .marca__nombre {
   font-family: var(--serif);
   font-size: 27px;
@@ -127,9 +149,8 @@ button { font-family: inherit; cursor: pointer; }
   padding-left: .5em; /* compensa el letter-spacing final */
 }
 .marca__bajada {
-  font-size: 8.5px;
-  letter-spacing: .52em;
-  padding-left: .52em;
+  font-size: 9.5px;
+  letter-spacing: .3em;
   text-transform: uppercase;
   color: var(--oro);
   margin-top: 5px;
@@ -293,7 +314,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 10px;
   letter-spacing: .34em;
   text-transform: uppercase;
-  color: rgba(251,250,246,.55);
+  color: rgba(251,250,246,.7);
   animation: aparece 1.4s 1.6s both;
 }
 .hero__scroll::after {
@@ -371,7 +392,7 @@ button { font-family: inherit; cursor: pointer; }
   font-family: var(--serif);
   font-size: 13px;
   letter-spacing: .3em;
-  color: var(--oro);
+  color: var(--oro-texto);
 }
 .categoria__nombre {
   font-family: var(--serif);
@@ -416,7 +437,7 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.1;
 }
 .lineas__panel p { max-width: 420px; font-size: 15.5px; line-height: 1.75; }
-.lineas__panel--negro p { color: rgba(251,250,246,.75); }
+.lineas__panel--negro p { color: rgba(251,250,246,.86); }
 .lineas__panel--blanco p { color: var(--tinta-suave); }
 
 .enlace-sutil {
@@ -497,10 +518,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .producto__linea {
-  font-size: 9.5px;
-  letter-spacing: .28em;
+  font-size: 11px;
+  letter-spacing: .24em;
   text-transform: uppercase;
-  color: var(--oro);
+  color: var(--oro-texto);
   margin-bottom: 8px;
 }
 .producto__nombre {
@@ -509,7 +530,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 21px;
   line-height: 1.2;
 }
-.producto__material { font-size: 12.5px; color: var(--gris); margin-top: 5px; }
+.producto__material { font-size: 13px; color: var(--gris); margin-top: 5px; }
 .producto__precio { font-size: 14.5px; margin-top: 10px; letter-spacing: .04em; }
 
 .producto__wsp {
@@ -627,6 +648,22 @@ button { font-family: inherit; cursor: pointer; }
    ============================================================ */
 
 .galeria { columns: 3 280px; column-gap: clamp(16px, 2vw, 26px); }
+
+/* espacio elegante mientras llegan las fotos de la galería */
+.galeria__pendiente {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 35%, rgba(169,133,60,.10), transparent 70%),
+    var(--marfil-alto);
+}
+.galeria__pendiente b { font-family: var(--serif); font-weight: 400; font-size: 30px; color: rgba(19,17,16,.28); }
+.galeria__pendiente span { font-size: 8.5px; letter-spacing: .3em; text-transform: uppercase; color: rgba(19,17,16,.35); }
 .galeria figure {
   break-inside: avoid;
   margin: 0 0 clamp(16px, 2vw, 26px);
@@ -646,7 +683,7 @@ button { font-family: inherit; cursor: pointer; }
   gap: clamp(36px, 6vw, 90px);
   align-items: center;
 }
-.duo__texto p { color: var(--tinta-suave); font-size: 16.5px; line-height: 1.8; margin-bottom: 18px; }
+.duo__texto p:not(.etiqueta) { color: var(--tinta-suave); font-size: 16.5px; line-height: 1.8; margin-bottom: 18px; }
 
 .retrato {
   position: relative;
@@ -705,20 +742,20 @@ button { font-family: inherit; cursor: pointer; }
 
 .wsp-flotante {
   position: fixed;
-  right: 22px; bottom: 22px;
+  right: clamp(16px, 4vw, 28px); bottom: clamp(16px, 4vw, 28px);
   z-index: 95;
-  width: 56px; height: 56px;
+  width: clamp(56px, 9vw, 68px); height: clamp(56px, 9vw, 68px);
   border-radius: 50%;
-  background: var(--tinta);
+  background: #25D366;
   color: var(--marfil);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 34px -10px rgba(19,17,16,.5);
+  box-shadow: 0 12px 34px -10px rgba(19,17,16,.55), 0 0 0 3px rgba(251,250,246,.9);
   transition: var(--transicion);
 }
-.wsp-flotante:hover { background: var(--oro); transform: translateY(-3px); }
-.wsp-flotante svg { width: 24px; height: 24px; fill: currentColor; }
+.wsp-flotante:hover { background: #1FAE59; transform: translateY(-3px); }
+.wsp-flotante svg { width: 55%; height: 55%; fill: currentColor; }
 
 /* ============================================================
    PIE DE PÁGINA
@@ -726,7 +763,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .pie {
   background: var(--tinta);
-  color: rgba(251,250,246,.72);
+  color: rgba(251,250,246,.82);
   padding: clamp(64px, 9vw, 110px) 0 40px;
 }
 .pie__rejilla {
@@ -741,7 +778,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .pie .marca__nombre { color: var(--marfil); font-size: 30px; }
 .pie .marca__bajada { color: var(--oro-claro); }
-.pie__lema { margin-top: 22px; font-size: 13.5px; line-height: 1.8; max-width: 300px; color: rgba(251,250,246,.55); }
+.pie__lema { margin-top: 22px; font-size: 13.5px; line-height: 1.8; max-width: 300px; color: rgba(251,250,246,.72); }
 
 .pie h5 {
   font-size: 10.5px;
@@ -758,7 +795,7 @@ button { font-family: inherit; cursor: pointer; }
 .pie__contacto { display: flex; flex-direction: column; gap: 16px; font-size: 13.5px; }
 .pie__contacto a { color: var(--marfil); transition: color var(--transicion); }
 .pie__contacto a:hover { color: var(--oro-claro); }
-.pie__contacto small { display: block; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(251,250,246,.4); margin-bottom: 5px; }
+.pie__contacto small { display: block; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(251,250,246,.6); margin-bottom: 5px; }
 
 .pie__final {
   display: flex;
@@ -768,5 +805,5 @@ button { font-family: inherit; cursor: pointer; }
   padding-top: 30px;
   font-size: 11px;
   letter-spacing: .12em;
-  color: rgba(251,250,246,.4);
+  color: rgba(251,250,246,.58);
 }

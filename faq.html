@@ -3,8 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Preguntas frecuentes — LUAR JOYAS</title>
+  <title>LUAR JOYAS-Preguntas frecuentes</title>
   <meta name="description" content="Resuelve tus dudas sobre materiales, tallas, envíos, garantías y compras en LUAR JOYAS.">
+  <meta property="og:title" content="LUAR JOYAS — Preguntas frecuentes">
+  <meta property="og:description" content="Materiales, tallas, envíos, garantías y cómo comprar en LUAR JOYAS.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:site_name" content="LUAR JOYAS">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23131110'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23CBB273' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -12,13 +18,13 @@
 </head>
 <body>
 
-  <div class="aviso">Envíos asegurados a toda Colombia · Piezas elaboradas en <em>Bogotá</em></div>
+  <div class="aviso">Envíos asegurados a toda Colombia - Piezas elaboradas a <em>Mano</em></div>
 
   <header class="cabecera">
     <div class="cabecera__interior">
       <a href="index.html" class="marca">
         <span class="marca__nombre">LUAR</span>
-        <span class="marca__bajada">Joyas · Bogotá</span>
+        <span class="marca__bajada">Joyas</span>
       </a>
       <nav class="navegacion">
         <a href="index.html">Inicio</a>
@@ -41,59 +47,10 @@
         </div>
 
         <!-- ============ PREGUNTAS ============
-             RESPUESTAS PROVISIONALES: el cliente enviará las
-             respuestas definitivas. Para editar una respuesta,
-             cambiar el texto dentro de <div class="respuesta">.
-             Para agregar una pregunta, copiar un bloque <details>
-             completo y cambiar los textos.               -->
-        <div class="faq">
-
-          <details>
-            <summary>¿En qué materiales están hechas sus joyas?</summary>
-            <div class="respuesta">Trabajamos principalmente en oro de 18k en sus distintos tonos, plata 950 y piedras preciosas seleccionadas, incluida la esmeralda colombiana. <em>(Respuesta provisional — pendiente confirmación del cliente.)</em></div>
-          </details>
-
-          <details>
-            <summary>¿Cuál es la diferencia entre la Alta Joyería y la línea de la casa?</summary>
-            <div class="respuesta">La Alta Joyería reúne piezas concebidas y elaboradas a mano, una a una, por nuestros orfebres. La línea de la casa lleva el mismo diseño y los mismos materiales a piezas de producción precisa, con precios más accesibles. <em>(Respuesta provisional.)</em></div>
-          </details>
-
-          <details>
-            <summary>¿Cómo sé cuál es mi talla de anillo?</summary>
-            <div class="respuesta">Escríbenos por WhatsApp y te guiamos paso a paso para medir tu talla desde casa. <em>(Respuesta provisional.)</em></div>
-          </details>
-
-          <details>
-            <summary>¿Hacen piezas personalizadas o a la medida?</summary>
-            <div class="respuesta">Sí. Realizamos encargos y diseños a medida. Cuéntanos tu idea por WhatsApp y te indicamos tiempos y valores. <em>(Respuesta provisional.)</em></div>
-          </details>
-
-          <details>
-            <summary>¿Hacen envíos a todo el país? ¿Cuánto demoran?</summary>
-            <div class="respuesta">Enviamos de forma asegurada a toda Colombia. Los tiempos varían según la ciudad de destino. <em>(Respuesta provisional — pendiente transportadora y tiempos.)</em></div>
-          </details>
-
-          <details>
-            <summary>¿Qué métodos de pago aceptan?</summary>
-            <div class="respuesta"><em>(Respuesta pendiente del cliente: transferencia, efectivo, Nequi/Daviplata, etc.)</em></div>
-          </details>
-
-          <details>
-            <summary>¿Las joyas tienen garantía?</summary>
-            <div class="respuesta"><em>(Respuesta pendiente del cliente: tiempo de garantía y qué cubre.)</em></div>
-          </details>
-
-          <details>
-            <summary>¿Cómo debo cuidar mis joyas?</summary>
-            <div class="respuesta">Evita el contacto con perfumes, cloro y químicos; guarda cada pieza por separado en un lugar seco. Con cada joya entregamos recomendaciones de cuidado. <em>(Respuesta provisional.)</em></div>
-          </details>
-
-          <details>
-            <summary>¿Cómo hago un pedido?</summary>
-            <div class="respuesta">Elige la pieza en el catálogo, pulsa «Consultar» y te atendemos directamente por WhatsApp para coordinar pago y envío.</div>
-          </details>
-
-        </div>
+             Las preguntas y respuestas se editan en el archivo
+             js/productos.js (sección PREGUNTAS), junto con los
+             productos. Aquí no hay nada que cambiar.       -->
+        <div class="faq" id="lista-faq"></div>
       </div>
     </section>
   </main>
@@ -104,9 +61,9 @@
         <div>
           <div class="marca">
             <span class="marca__nombre">LUAR</span>
-            <span class="marca__bajada">Joyas · Bogotá</span>
+            <span class="marca__bajada">Joyas</span>
           </div>
-          <p class="pie__lema">Comercialización y fabricación de joyas, metales y piedras preciosas. Desde Bogotá para toda Colombia.</p>
+          <p class="pie__lema">Comercialización y fabricación de joyas, metales y piedras preciosas, para toda Colombia.</p>
         </div>
         <div>
           <h5>Explorar</h5>
@@ -131,7 +88,6 @@
       </div>
       <div class="pie__final">
         <span>© 2026 LUAR JOYAS · Todos los derechos reservados</span>
-        <span>Bogotá, Colombia</span>
       </div>
     </div>
   </footer>

@@ -33,8 +33,11 @@ Desarrollado por **JarcOnline** · rueda3062@gmail.com
 ### Cambiar el nombre de la línea de la casa
 - En `js/productos.js`, en la sección `CONFIG`, cambia el texto de `nombreLineaAtelier`
 
-### Editar las respuestas de preguntas frecuentes
-- Abre `faq.html` y cambia el texto dentro de cada `<div class="respuesta">`
+### Cambiar la franja negra superior o la frase del pie de página
+- En `js/productos.js`, en la sección `CONFIG`, edita `textoAviso` o `lemaPie` — el cambio aparece en todas las páginas a la vez
+
+### Editar las preguntas frecuentes
+- En `js/productos.js`, al final, está la sección `PREGUNTAS`: cambia el texto de `pregunta` o `respuesta`, o copia un bloque completo para agregar una nueva
 
 ## Estructura
 
