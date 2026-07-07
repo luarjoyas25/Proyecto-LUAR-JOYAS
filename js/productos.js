@@ -51,7 +51,7 @@ const CONFIG = {
   slogan: "El legado que llevarás contigo",
 
   // Frase larga que refuerza el slogan (aparece en el pie y en meta descripciones)
-  lemaPie: "Joyas que transforman momentos en recuerdos eternos. Fabricación y comercialización desde Bogotá, para toda Colombia.",
+  lemaPie: "Joyas que transforman momentos en recuerdos eternos. Fabricación y comercialización, para toda Colombia.",
 };
 
 const PRODUCTOS = [

@@ -270,9 +270,52 @@ function iniciarBase() {
   });
 }
 
+/* ---------- intro de portada (solo en index.html) ---------- */
+
+function iniciarIntro() {
+  var intro = document.getElementById("intro");
+  if (!intro) return;
+
+  // Si ya se vio en esta sesión o si el usuario prefiere menos movimiento,
+  // la intro no se muestra (la clase 'intro-omitir' la oculta desde el <head>).
+  var yaVista = false;
+  try { yaVista = !!sessionStorage.getItem("luar-intro-vista"); } catch (e) {}
+  var prefiereReducir = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (yaVista || prefiereReducir) {
+    intro.remove();
+    document.documentElement.classList.add("intro-terminada");
+    return;
+  }
+
+  // marca la sesión para no repetirla
+  try { sessionStorage.setItem("luar-intro-vista", "1"); } catch (e) {}
+
+  function cerrar() {
+    document.documentElement.classList.add("intro-terminada");
+    // deja que termine el fade y remueve el nodo (libera memoria)
+    setTimeout(function () { if (intro.parentNode) intro.remove(); }, 900);
+  }
+
+  // botón de "Saltar" y clic en cualquier lado + tecla Esc
+  var botonSaltar = document.getElementById("intro-saltar");
+  if (botonSaltar) botonSaltar.addEventListener("click", cerrar);
+  intro.addEventListener("click", function (e) {
+    if (e.target === botonSaltar) return;
+    cerrar();
+  });
+  document.addEventListener("keydown", function esc(e) {
+    if (e.key === "Escape") { cerrar(); document.removeEventListener("keydown", esc); }
+  });
+
+  // cierre automático al terminar la animación CSS (3.3s = 2.4s inicio + .9s salida)
+  setTimeout(cerrar, 3300);
+}
+
 /* ---------- arranque ---------- */
 
 document.addEventListener("DOMContentLoaded", function () {
+  iniciarIntro();
   iniciarBase();
   iniciarCategoriasInicio();
   iniciarDestacados();

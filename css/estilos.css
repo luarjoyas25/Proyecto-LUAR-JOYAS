@@ -67,6 +67,118 @@ button { font-family: inherit; cursor: pointer; }
   html { scroll-behavior: auto; }
 }
 
+/* ============================================================
+   INTRO DE PORTADA
+   Cortina negra que revela la marca — solo en index.html
+   Se muestra UNA VEZ por sesión. Solo usa transform + opacity
+   (GPU-aceleradas) para no consumir batería en móviles.
+   ============================================================ */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--tinta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: introSale .9s cubic-bezier(.7,0,.3,1) 2.4s forwards;
+  overflow: hidden;
+  will-change: opacity;
+}
+.intro::before {
+  /* halo dorado sutil detrás de la marca */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(203,178,115,.15), transparent 65%);
+  opacity: 0;
+  animation: introHalo 1.4s ease-out .3s forwards;
+}
+
+.intro-omitir .intro { display: none; }
+html.intro-terminada { }
+html.intro-terminada .intro { display: none; }
+
+/* mientras corre la intro, el resto de la página no se puede desplazar */
+html:not(.intro-omitir):not(.intro-terminada) body { overflow: hidden; height: 100vh; }
+
+.intro__marca { text-align: center; position: relative; z-index: 2; padding: 24px; }
+
+.intro__nombre {
+  font-family: var(--serif);
+  color: var(--marfil);
+  font-size: clamp(60px, 13vw, 140px);
+  letter-spacing: .5em;
+  display: block;
+  line-height: 1;
+  padding-left: .5em; /* compensa el letter-spacing final */
+}
+.intro__nombre span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(22px);
+  animation: introLetra .8s cubic-bezier(.22,.61,.21,1) forwards;
+}
+.intro__nombre span:nth-child(1) { animation-delay: .35s; }
+.intro__nombre span:nth-child(2) { animation-delay: .5s; }
+.intro__nombre span:nth-child(3) { animation-delay: .65s; }
+.intro__nombre span:nth-child(4) { animation-delay: .8s; }
+
+.intro__linea {
+  display: block;
+  width: 90px;
+  height: 1px;
+  background: var(--oro-claro);
+  margin: 34px auto 22px;
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: introLinea 1s cubic-bezier(.22,.61,.21,1) 1.15s forwards;
+}
+.intro__bajada {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--oro-claro);
+  font-size: 13px;
+  letter-spacing: .5em;
+  padding-left: .5em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: introBajada .9s ease-out 1.55s forwards;
+}
+
+.intro__saltar {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  background: none;
+  border: 1px solid rgba(251,250,246,.3);
+  color: rgba(251,250,246,.7);
+  padding: 9px 20px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: color .3s, border-color .3s;
+  animation: introBajada .6s ease-out 1.8s forwards;
+}
+.intro__saltar:hover { color: var(--marfil); border-color: var(--marfil); }
+
+@keyframes introLetra  { to { opacity: 1; transform: none; } }
+@keyframes introLinea  { to { transform: scaleX(1); } }
+@keyframes introBajada { to { opacity: 1; } }
+@keyframes introHalo   { to { opacity: 1; } }
+@keyframes introSale   { to { opacity: 0; visibility: hidden; } }
+
+/* en móvil: reduce ligeramente el tamaño y acorta un poco los tiempos */
+@media (max-width: 560px) {
+  .intro__linea { width: 60px; margin: 28px auto 18px; }
+  .intro__bajada { font-size: 11.5px; }
+  .intro__saltar { right: 16px; bottom: 16px; padding: 8px 16px; font-size: 10px; }
+}
+
 .titulo {
   font-family: var(--serif);
   font-weight: 400;

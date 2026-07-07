@@ -33,8 +33,31 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilos.css">
+
+  <!-- Intro: si ya se vio en esta sesión, no la muestra -->
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem("luar-intro-vista")) {
+          document.documentElement.classList.add("intro-omitir");
+        }
+      } catch (e) { /* sessionStorage bloqueado: se muestra la intro */ }
+    })();
+  </script>
 </head>
 <body>
+
+  <!-- INTRO DE PORTADA (solo en index.html, una vez por sesión) -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__marca">
+      <span class="intro__nombre">
+        <span>L</span><span>U</span><span>A</span><span>R</span>
+      </span>
+      <span class="intro__linea"></span>
+      <span class="intro__bajada">Joyas</span>
+    </div>
+    <button class="intro__saltar" id="intro-saltar" type="button" aria-label="Saltar intro">Saltar</button>
+  </div>
 
   <div class="aviso">Envíos asegurados a toda Colombia - Piezas elaboradas a <em>Mano</em></div>
 
