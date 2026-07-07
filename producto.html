@@ -39,7 +39,12 @@
 
   <main>
     <div class="contenedor" style="padding-top: clamp(24px, 3vw, 40px);">
-      <a href="catalogo.html" class="volver">← Volver al catálogo</a>
+      <a href="catalogo.html" class="volver">
+        <svg class="volver__flecha" viewBox="0 0 28 8" aria-hidden="true">
+          <path d="M27 4H1M5 1 1 4l4 3" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Volver al catálogo</span>
+      </a>
     </div>
 
     <!-- La vista de detalle se rellena en JS con el producto de ?id=X -->

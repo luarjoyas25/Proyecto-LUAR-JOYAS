@@ -759,14 +759,26 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
    ============================================================ */
 
 .volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
   font-family: var(--sans);
+  font-weight: 300;
   font-size: 11px;
-  letter-spacing: .24em;
+  letter-spacing: .28em;
   text-transform: uppercase;
   color: var(--gris);
   transition: color var(--transicion);
+  text-decoration: none;
+}
+.volver__flecha {
+  width: 28px;
+  height: 8px;
+  overflow: visible;
+  transition: transform var(--transicion);
 }
 .volver:hover { color: var(--tinta); }
+.volver:hover .volver__flecha { transform: translateX(-6px); }
 
 .detalle {
   display: grid;
