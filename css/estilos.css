@@ -224,6 +224,39 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 }
 .aviso em { font-style: normal; color: var(--oro-claro); }
 
+/* franja con varios mensajes que rotan (solo si CONFIG.avisos tiene 2 o más) */
+.aviso--rotativo {
+  position: relative;
+  padding: 0;
+  min-height: 38px;
+  overflow: hidden;
+}
+.aviso__msg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  opacity: 0;
+  animation: avisoRotar var(--aviso-total, 12s) infinite;
+  animation-delay: var(--aviso-delay, 0s);
+  will-change: opacity, transform;
+}
+@keyframes avisoRotar {
+  0%   { opacity: 0; transform: translateY(6px); }
+  3%   { opacity: 1; transform: none; }
+  30%  { opacity: 1; transform: none; }
+  33%  { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 0; transform: translateY(-6px); }
+}
+/* accesibilidad: si el usuario tiene reducción de movimiento,
+   muestra estático el primer mensaje sin rotar */
+@media (prefers-reduced-motion: reduce) {
+  .aviso--rotativo .aviso__msg { animation: none; opacity: 0; }
+  .aviso--rotativo .aviso__msg:first-child { opacity: 1; position: static; }
+}
+
 .cabecera {
   position: sticky;
   top: 0;

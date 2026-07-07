@@ -214,8 +214,25 @@ function observarReveles() {
 function iniciarBase() {
   // franja superior y lema del pie: se escriben una sola vez en
   // CONFIG (js/productos.js) y aparecen en todas las páginas
+  var listaAvisos = Array.isArray(CONFIG.avisos) ? CONFIG.avisos.filter(Boolean)
+                 : CONFIG.textoAviso ? [CONFIG.textoAviso] : [];
+  var duracionCiclo = listaAvisos.length * 4; // 4 segundos por mensaje
   document.querySelectorAll(".aviso").forEach(function (el) {
-    if (CONFIG.textoAviso) el.innerHTML = CONFIG.textoAviso;
+    if (!listaAvisos.length) return;
+    el.innerHTML = "";
+    if (listaAvisos.length === 1) {
+      el.innerHTML = listaAvisos[0];
+      return;
+    }
+    el.classList.add("aviso--rotativo");
+    listaAvisos.forEach(function (texto, i) {
+      var span = document.createElement("span");
+      span.className = "aviso__msg";
+      span.innerHTML = texto;
+      span.style.setProperty("--aviso-total", duracionCiclo + "s");
+      span.style.setProperty("--aviso-delay", (i * 4) + "s");
+      el.appendChild(span);
+    });
   });
   document.querySelectorAll(".pie__lema").forEach(function (el) {
     if (CONFIG.lemaPie) el.textContent = CONFIG.lemaPie;

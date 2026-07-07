@@ -43,9 +43,17 @@ const CONFIG = {
   // Nombre de la línea hecha a mano
   nombreLineaAlta: "Alta Joyería",
 
-  // Texto de la franja negra superior (aparece en TODAS las páginas).
-  // Puedes resaltar una palabra en dorado escribiéndola entre <em> y </em>
-  textoAviso: "Envíos asegurados a toda Colombia · Piezas elaboradas a <em>mano</em>",
+  // Mensajes de la franja negra superior (aparecen en TODAS las páginas).
+  // Se van alternando automáticamente cada 4 segundos con un fade suave.
+  // - Para editar: cambia el texto entre las comillas
+  // - Para agregar uno: copia una línea completa (incluida la coma final)
+  // - Para quitarlo: borra la línea entera
+  // - Puedes resaltar una palabra en dorado escribiéndola entre <em> y </em>
+  avisos: [
+    "Envíos a toda Colombia",
+    "Consulta personalizada por WhatsApp",
+    "Alta joyería hecha a mano",
+  ],
 
   // Slogan de la marca (aparece en la portada bajo el logo y en el pie)
   slogan: "El legado que llevarás contigo",
