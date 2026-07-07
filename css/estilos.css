@@ -516,10 +516,18 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 
 .categorias {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* 3 columnas fijas en desktop para simetría (3+3 con 6 categorías,
+     3+3+3 con 9, etc.). En tablet baja a 2 y en móvil a 1. */
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--linea);
   border: 1px solid var(--linea);
+}
+@media (max-width: 900px) {
+  .categorias { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .categorias { grid-template-columns: 1fr; }
 }
 .categoria {
   background: var(--marfil);
