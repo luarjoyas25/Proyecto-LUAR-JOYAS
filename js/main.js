@@ -40,7 +40,7 @@ function tarjetaProducto(p) {
       '</div>' +
       '<div class="producto__linea">' + nombreLinea(p.linea) + '</div>' +
       '<h3 class="producto__nombre">' + p.nombre + '</h3>' +
-      '<div class="producto__material">' + p.material + ' · Ref. ' + p.ref + '</div>' +
+      '<div class="producto__material">' + p.material + ' · <span translate="no">Ref. ' + p.ref + '</span></div>' +
       '<div class="producto__precio">' + formatearPrecio(p.precio) + '</div>' +
     '</a>' +
     '<a class="producto__wsp" href="' + enlaceWhatsApp(p) + '" target="_blank" rel="noopener">' +
@@ -114,7 +114,7 @@ function iniciarDetalle() {
       '<p class="detalle__descripcion">' + descripcion + '</p>' +
       '<dl class="detalle__specs">' +
         '<div><dt>Material</dt><dd>' + producto.material + '</dd></div>' +
-        '<div><dt>Referencia</dt><dd>' + producto.ref + '</dd></div>' +
+        '<div><dt>Referencia</dt><dd translate="no">' + producto.ref + '</dd></div>' +
         '<div><dt>Disponibilidad</dt><dd>' + disponibilidad + '</dd></div>' +
       '</dl>' +
       '<a class="detalle__cta" href="' + enlaceWhatsApp(producto) + '" target="_blank" rel="noopener">' +

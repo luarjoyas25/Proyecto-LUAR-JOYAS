@@ -158,6 +158,6 @@ const PREGUNTAS = [
   },
   {
     pregunta: "¿Cómo hago un pedido?",
-    respuesta: "Elige la pieza en el catálogo, pulsa «Consultar» y te atendemos directamente por WhatsApp para coordinar pago y envío.",
+    respuesta: "Elige la pieza en el catálogo, pulsa \"Consultar\" y te atendemos directamente por WhatsApp para coordinar pago y envío.",
   },
 ];
