@@ -284,6 +284,7 @@ function iniciarIntro() {
 
   if (yaVista || prefiereReducir) {
     intro.remove();
+    document.documentElement.classList.remove("intro-activa");
     document.documentElement.classList.add("intro-terminada");
     return;
   }
@@ -292,6 +293,7 @@ function iniciarIntro() {
   try { sessionStorage.setItem("luar-intro-vista", "1"); } catch (e) {}
 
   function cerrar() {
+    document.documentElement.classList.remove("intro-activa");
     document.documentElement.classList.add("intro-terminada");
     // deja que termine el fade y remueve el nodo (libera memoria)
     setTimeout(function () { if (intro.parentNode) intro.remove(); }, 900);

@@ -34,14 +34,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilos.css">
 
-  <!-- Intro: si ya se vio en esta sesión, no la muestra -->
+  <!-- Intro: si ya se vio en esta sesión, no la muestra; si no, marca la
+       clase "intro-activa" para bloquear el scroll durante la animación -->
   <script>
     (function () {
       try {
         if (sessionStorage.getItem("luar-intro-vista")) {
           document.documentElement.classList.add("intro-omitir");
+        } else {
+          document.documentElement.classList.add("intro-activa");
         }
-      } catch (e) { /* sessionStorage bloqueado: se muestra la intro */ }
+      } catch (e) {
+        document.documentElement.classList.add("intro-activa");
+      }
     })();
   </script>
 </head>

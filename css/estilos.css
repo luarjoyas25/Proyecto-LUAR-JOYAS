@@ -96,12 +96,11 @@ button { font-family: inherit; cursor: pointer; }
   animation: introHalo 1.4s ease-out .3s forwards;
 }
 
-.intro-omitir .intro { display: none; }
-html.intro-terminada { }
-html.intro-terminada .intro { display: none; }
+.intro-omitir .intro,
+.intro-terminada .intro { display: none; }
 
-/* mientras corre la intro, el resto de la página no se puede desplazar */
-html:not(.intro-omitir):not(.intro-terminada) body { overflow: hidden; height: 100vh; }
+/* solo mientras corre la intro (solo en index.html) el scroll queda bloqueado */
+html.intro-activa body { overflow: hidden; height: 100vh; }
 
 .intro__marca { text-align: center; position: relative; z-index: 2; padding: 24px; }
 
