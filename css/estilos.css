@@ -17,7 +17,6 @@
   --linea-oro:   rgba(169, 133, 60, .45);
 
   --serif: 'Marcellus', 'Times New Roman', serif;
-  --serif-cursiva: 'Cormorant Garamond', Georgia, serif; /* cursiva real para frases con firma */
   --sans:  'Jost', system-ui, sans-serif;
 
   --ancho: 1280px;
@@ -428,13 +427,14 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
   margin: 30px 0 0;
   animation: sube 1.2s .45s both;
 }
+/* mismo estilo que las citas de la web: Marcellus regular, dorado */
 .hero h1 .fina {
   display: block;
-  font-family: var(--serif-cursiva);
-  font-style: italic;
+  font-family: var(--serif);
   font-weight: 400;
-  font-size: .34em;
-  letter-spacing: .06em;
+  font-size: .36em;
+  letter-spacing: .04em;
+  line-height: 1.35;
   margin-top: 24px;
   color: var(--oro-claro);
 }
@@ -1173,13 +1173,12 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 .pie .marca__bajada { color: var(--oro-claro); }
 .pie__slogan {
   margin-top: 18px;
-  font-family: var(--serif-cursiva);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 20px;
-  letter-spacing: .02em;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: .03em;
   color: var(--oro-claro);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 .pie__lema { margin-top: 14px; font-size: 13.5px; line-height: 1.8; max-width: 320px; color: rgba(251,250,246,.72); }
 
