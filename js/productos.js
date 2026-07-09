@@ -21,8 +21,8 @@
    - ref:       referencia interna de la pieza (aparece en la web)
    - nombre:    nombre de la joya
    - categoria: "cadenas" | "anillos" | "candongas" | "topos" | "dijes" | "pulsos"
-   - linea:     "alta"  (Alta Joyería, hecha a mano)
-                "atelier" (línea de producción — nombre editable abajo en CONFIG)
+   - linea:     "alta"  (Alta Joyería: piezas de lujo hechas a mano)
+                "atelier" (Joyería: manufactura industrial de calidad — nombre editable abajo en CONFIG)
    - material:  texto libre, ej: "Oro 18k · Esmeralda"
    - precio:    número SIN puntos ni signo $. Ej: 2500000
    - imagen:    nombre del archivo dentro de img/productos/
@@ -36,9 +36,9 @@ const CONFIG = {
   // Correo que aparece en la web
   correo: "luarjoyas25@gmail.com",
 
-  // Nombre comercial de la línea hecha en máquina.
-  // PENDIENTE: el cliente confirmará el nombre definitivo.
-  nombreLineaAtelier: "Colección Atelier",
+  // Nombre comercial de la línea de manufactura industrial
+  // (producción en máquina con los mismos criterios de calidad)
+  nombreLineaAtelier: "Joyería",
 
   // Nombre de la línea hecha a mano
   nombreLineaAlta: "Alta Joyería",
@@ -60,6 +60,17 @@ const CONFIG = {
 
   // Frase larga que refuerza el slogan (aparece en el pie y en meta descripciones)
   lemaPie: "Joyas que transforman momentos en recuerdos eternos. Fabricación y comercialización, para toda Colombia.",
+
+  // Redes sociales (aparecen como botones en el pie de todas las páginas).
+  // PENDIENTE: pegar los links completos entre las comillas cuando el
+  // cliente los envíe. Ejemplo: instagram: "https://instagram.com/luarjoyas"
+  // Mientras estén vacíos, el botón se muestra pero sin enlace.
+  redes: {
+    tiktok: "",
+    facebook: "",
+    instagram: "",
+    // WhatsApp usa automáticamente el número de arriba, no necesita link
+  },
 };
 
 const PRODUCTOS = [
@@ -129,8 +140,8 @@ const PREGUNTAS = [
     respuesta: "Trabajamos principalmente en oro de 18k en sus distintos tonos, plata 950 y piedras preciosas seleccionadas, incluida la esmeralda colombiana. (Respuesta provisional — pendiente confirmación del cliente.)",
   },
   {
-    pregunta: "¿Cuál es la diferencia entre la Alta Joyería y la línea de la casa?",
-    respuesta: "La Alta Joyería reúne piezas concebidas y elaboradas a mano, una a una, por nuestros orfebres. La línea de la casa lleva el mismo diseño y los mismos materiales a piezas de producción precisa, con precios más accesibles. (Respuesta provisional.)",
+    pregunta: "¿Cuál es la diferencia entre la Alta Joyería y la Joyería?",
+    respuesta: "La Alta Joyería reúne piezas de lujo concebidas y elaboradas a mano, una a una, por nuestros orfebres. La Joyería lleva los mismos criterios de calidad y los mismos materiales a piezas de manufactura industrial de precisión, con precios más accesibles. (Respuesta provisional.)",
   },
   {
     pregunta: "¿Cómo sé cuál es mi talla de anillo?",

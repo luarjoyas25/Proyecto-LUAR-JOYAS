@@ -375,6 +375,42 @@ function iniciarBase() {
   document.querySelectorAll("[data-nombre-atelier]").forEach(function (el) {
     el.textContent = CONFIG.nombreLineaAtelier;
   });
+
+  // botones de redes sociales del pie: los links se editan en CONFIG.redes.
+  // Si un link está vacío, el botón se muestra atenuado (sin enlace).
+  var ICONOS_REDES = {
+    tiktok: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.8c-.9-1-1.4-2.3-1.4-3.8h-3.1v13.5a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.5c-.3 0-.6-.1-.9-.1a6.1 6.1 0 1 0 6.1 6.1V9.9c1.2.9 2.7 1.4 4.3 1.4V8.2c-1.2 0-2.3-.9-3-2.4Z"/></svg>',
+    facebook: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.6V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.3H7.6V14h2.7v8h3.2Z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1Zm0 1.8c-3.1 0-3.5 0-4.8.1-1.1.1-1.4.2-1.7.3-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.1.3-.3.6-.3 1.7-.1 1.2-.1 1.6-.1 4.8s0 3.5.1 4.8c.1 1.1.2 1.4.3 1.7.2.4.4.7.7 1 .3.3.6.5 1 .7.3.1.6.3 1.7.3 1.2.1 1.6.1 4.8.1s3.5 0 4.8-.1c1.1-.1 1.4-.2 1.7-.3.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .1-.3.3-.6.3-1.7.1-1.2.1-1.6.1-4.8s0-3.5-.1-4.8c-.1-1.1-.2-1.4-.3-1.7-.2-.4-.4-.7-.7-1-.3-.3-.6-.5-1-.7-.3-.1-.6-.3-1.7-.3-1.2-.1-1.6-.1-4.8-.1Zm0 3.1a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Zm5.1-2.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg>',
+  };
+  var redes = CONFIG.redes || {};
+  document.querySelectorAll("[data-redes]").forEach(function (contenedor) {
+    contenedor.innerHTML = "";
+    ["tiktok", "facebook", "instagram"].forEach(function (red) {
+      var link = (redes[red] || "").trim();
+      var el;
+      if (link) {
+        el = document.createElement("a");
+        el.href = link;
+        el.target = "_blank";
+        el.rel = "noopener";
+      } else {
+        el = document.createElement("span");
+        el.title = "Próximamente";
+      }
+      el.setAttribute("aria-label", red.charAt(0).toUpperCase() + red.slice(1));
+      el.innerHTML = ICONOS_REDES[red];
+      contenedor.appendChild(el);
+    });
+    // WhatsApp siempre activo con el número del negocio
+    var wsp = document.createElement("a");
+    wsp.href = enlaceWhatsApp(null);
+    wsp.target = "_blank";
+    wsp.rel = "noopener";
+    wsp.setAttribute("aria-label", "WhatsApp");
+    wsp.innerHTML = ICONO_WSP;
+    contenedor.appendChild(wsp);
+  });
 }
 
 /* ---------- intro de portada (solo en index.html) ---------- */
