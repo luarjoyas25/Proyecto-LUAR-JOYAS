@@ -17,6 +17,7 @@
   --linea-oro:   rgba(169, 133, 60, .45);
 
   --serif: 'Marcellus', 'Times New Roman', serif;
+  --serif-cursiva: 'Cormorant Garamond', Georgia, serif; /* cursiva real para frases con firma */
   --sans:  'Jost', system-ui, sans-serif;
 
   --ancho: 1280px;
@@ -427,7 +428,16 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
   margin: 30px 0 0;
   animation: sube 1.2s .45s both;
 }
-.hero h1 .fina { display: block; font-size: .42em; letter-spacing: .42em; margin-top: 22px; color: var(--marfil-alto); }
+.hero h1 .fina {
+  display: block;
+  font-family: var(--serif-cursiva);
+  font-style: italic;
+  font-weight: 400;
+  font-size: .34em;
+  letter-spacing: .06em;
+  margin-top: 24px;
+  color: var(--oro-claro);
+}
 
 .hero__linea {
   width: 64px; height: 1px;
@@ -1163,9 +1173,11 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 .pie .marca__bajada { color: var(--oro-claro); }
 .pie__slogan {
   margin-top: 18px;
-  font-family: var(--serif);
+  font-family: var(--serif-cursiva);
   font-style: italic;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: .02em;
   color: var(--oro-claro);
   line-height: 1.4;
 }
