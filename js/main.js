@@ -10,19 +10,34 @@ document.documentElement.classList.add("js");
 
 /* ---------- utilidades ---------- */
 
+// Devuelve el precio formateado, o "" si no hay precio (0 o vacío).
+// Así el precio se oculta solo cuando el cliente aún no lo definió.
 function formatearPrecio(numero) {
+  if (!numero || numero <= 0) return "";
   return "$" + numero.toLocaleString("es-CO") + " COP";
 }
 
 function enlaceWhatsApp(producto) {
-  var texto = producto
-    ? "Hola LUAR JOYAS, me interesa la pieza \"" + producto.nombre + "\" (Ref. " + producto.ref + ") que vi en su página web."
-    : "Hola LUAR JOYAS, me gustaría recibir más información.";
+  var texto;
+  if (producto) {
+    texto = "Hola LUAR JOYAS, me interesa la pieza \"" + producto.nombre + "\"";
+    if (producto.referencia) texto += " (Ref. " + producto.referencia + ")";
+    texto += " que vi en su página web.";
+  } else {
+    texto = "Hola LUAR JOYAS, me gustaría recibir más información.";
+  }
   return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(texto);
 }
 
-function nombreLinea(clave) {
-  return clave === "alta" ? CONFIG.nombreLineaAlta : CONFIG.nombreLineaAtelier;
+// Nombre visible de la categoría de un producto (ej: "anillos" → "Anillos")
+function nombreCategoria(clave) {
+  var c = CATEGORIAS.find(function (x) { return x.clave === clave; });
+  return c ? c.nombre : "";
+}
+
+// Primera imagen de un producto (la principal), o null si no tiene
+function imagenPrincipal(producto) {
+  return (producto.imagenes && producto.imagenes.length) ? producto.imagenes[0] : null;
 }
 
 var ICONO_WSP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.8a12 12 0 0 0 4.6 4.2c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0 0-.2-.1-.4-.1Z"/></svg>';
@@ -33,40 +48,66 @@ function tarjetaProducto(p) {
   var articulo = document.createElement("article");
   articulo.className = "producto revela";
 
-  articulo.innerHTML =
-    '<a class="producto__enlace" href="producto.html?id=' + p.id + '">' +
-      '<div class="producto__marco">' +
-        '<img src="img/productos/' + p.imagen + '" alt="' + p.nombre + ' — LUAR JOYAS">' +
-      '</div>' +
-      '<div class="producto__linea">' + nombreLinea(p.linea) + '</div>' +
-      '<h3 class="producto__nombre">' + p.nombre + '</h3>' +
-      '<div class="producto__material">' + p.material + ' · <span translate="no">Ref. ' + p.ref + '</span></div>' +
-      '<div class="producto__precio">' + formatearPrecio(p.precio) + '</div>' +
-    '</a>' +
-    '<a class="producto__wsp" href="' + enlaceWhatsApp(p) + '" target="_blank" rel="noopener">' +
-      ICONO_WSP + 'Consultar' +
-    '</a>';
+  var imagen = imagenPrincipal(p);
+  var precio = formatearPrecio(p.precio);
 
-  // Si la foto aún no existe, muestra el espacio elegante con el monograma
+  // Línea de material · referencia — solo si hay al menos uno de los dos
+  var lineaMaterial = "";
+  if (p.material || p.referencia) {
+    lineaMaterial = '<div class="producto__material">' +
+      (p.material || "") +
+      (p.material && p.referencia ? " · " : "") +
+      (p.referencia ? '<span translate="no">Ref. ' + p.referencia + "</span>" : "") +
+      "</div>";
+  }
+
+  articulo.innerHTML =
+    '<a class="producto__enlace" href="producto.html#' + p.id + '">' +
+      '<div class="producto__marco">' +
+        (imagen ? '<img src="img/productos/' + imagen + '" alt="' + p.nombre + ' — LUAR JOYAS">' : "") +
+      "</div>" +
+      '<div class="producto__linea">' + nombreCategoria(p.categoria) + "</div>" +
+      '<h3 class="producto__nombre">' + p.nombre + "</h3>" +
+      lineaMaterial +
+      (precio ? '<div class="producto__precio">' + precio + "</div>" : "") +
+    "</a>" +
+    '<a class="producto__wsp" href="' + enlaceWhatsApp(p) + '" target="_blank" rel="noopener">' +
+      ICONO_WSP + "Consultar" +
+    "</a>";
+
+  // Si la foto no existe (o no hay), muestra el espacio elegante con el monograma
+  var marco = articulo.querySelector(".producto__marco");
+  function mostrarPendiente() {
+    marco.innerHTML = '<div class="producto__pendiente"><b>L</b><span>' + p.categoria + "</span></div>";
+  }
   var img = articulo.querySelector("img");
-  img.addEventListener("error", function () {
-    img.remove();
-    var pendiente = document.createElement("div");
-    pendiente.className = "producto__pendiente";
-    pendiente.innerHTML = "<b>L</b><span>" + p.categoria + "</span>";
-    articulo.querySelector(".producto__marco").prepend(pendiente);
-  });
+  if (img) img.addEventListener("error", mostrarPendiente);
+  else mostrarPendiente();
 
   return articulo;
 }
 
-/* ---------- detalle de producto (producto.html?id=X) ---------- */
+/* ---------- detalle de producto (producto.html#ID) ----------
+   Usamos "#" en vez de "?" para identificar la pieza. Así funciona
+   en cualquier hosting sin configuración especial y el enlace se
+   puede compartir. Al abrir una pieza relacionada (misma página)
+   volvemos a dibujar el detalle. */
 
 function iniciarDetalle() {
   var contenedor = document.getElementById("detalle");
   if (!contenedor) return;
+  pintarDetalle();
+  window.addEventListener("hashchange", function () {
+    pintarDetalle();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
 
-  var id = parseInt(new URLSearchParams(location.search).get("id"), 10);
+function pintarDetalle() {
+  var contenedor = document.getElementById("detalle");
+  if (!contenedor) return;
+
+  var id = parseInt(location.hash.replace("#", ""), 10);
   var producto = PRODUCTOS.find(function (p) { return p.id === id; });
 
   if (!producto) {
@@ -82,7 +123,8 @@ function iniciarDetalle() {
   // Actualiza el título y las meta descripciones para que el link
   // compartido por WhatsApp muestre el nombre de la pieza
   document.title = producto.nombre + " — LUAR JOYAS";
-  var descTexto = producto.nombre + " · " + producto.material + " · " + formatearPrecio(producto.precio) + " · LUAR JOYAS.";
+  var descTexto = producto.descripcion ||
+    (producto.nombre + " · " + nombreCategoria(producto.categoria) + " · LUAR JOYAS.");
   var metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) metaDesc.setAttribute("content", descTexto);
   var ogTitle = document.querySelector('meta[property="og:title"]');
@@ -90,47 +132,70 @@ function iniciarDetalle() {
   var ogDesc = document.querySelector('meta[property="og:description"]');
   if (ogDesc) ogDesc.setAttribute("content", descTexto);
 
-  // Descripción por defecto si el producto no trae la suya
+  var imgs = producto.imagenes || [];
+  var precio = formatearPrecio(producto.precio);
+
+  // Descripción: la del producto o, si no hay, una invitación a consultar
   var descripcion = producto.descripcion ||
-    "Pieza elaborada a mano en " + producto.material + ". Cada detalle se pule individualmente para lograr un acabado impecable, digno del oficio de la casa.";
-  var disponibilidad = producto.disponibilidad || "Bajo pedido · 3–4 semanas";
+    "Escríbenos por WhatsApp para conocer los detalles, la disponibilidad y el precio de esta pieza.";
+
+  // Miniaturas: solo si hay más de una foto
+  var thumbsHTML = "";
+  if (imgs.length > 1) {
+    thumbsHTML = '<div class="detalle__thumbs">' +
+      imgs.map(function (src, i) {
+        return '<button class="detalle__thumb' + (i === 0 ? " activo" : "") + '" ' +
+               'data-src="img/productos/' + src + '" aria-label="Ver foto ' + (i + 1) + '">' +
+               '<img src="img/productos/' + src + '" alt="' + producto.nombre + " " + (i + 1) + '">' +
+               "</button>";
+      }).join("") +
+      "</div>";
+  }
+
+  // Ficha técnica: solo las filas que tengan datos
+  var filas = "";
+  if (producto.material)      filas += "<div><dt>Material</dt><dd>" + producto.material + "</dd></div>";
+  if (producto.referencia)    filas += '<div><dt>Referencia</dt><dd translate="no">' + producto.referencia + "</dd></div>";
+  if (producto.disponibilidad) filas += "<div><dt>Disponibilidad</dt><dd>" + producto.disponibilidad + "</dd></div>";
+  var specsHTML = filas ? '<dl class="detalle__specs">' + filas + "</dl>" : "";
 
   contenedor.innerHTML =
     '<div class="detalle__galeria">' +
       '<div class="detalle__marco">' +
-        '<img class="detalle__foto" src="img/productos/' + producto.imagen + '" alt="' + producto.nombre + ' — LUAR JOYAS">' +
-      '</div>' +
-      '<div class="detalle__thumbs">' +
-        '<div class="detalle__thumb"></div>' +
-        '<div class="detalle__thumb"></div>' +
-        '<div class="detalle__thumb"></div>' +
-      '</div>' +
-    '</div>' +
+        (imgs.length ? '<img class="detalle__foto" src="img/productos/' + imgs[0] + '" alt="' + producto.nombre + ' — LUAR JOYAS">' : "") +
+      "</div>" +
+      thumbsHTML +
+    "</div>" +
     '<div class="detalle__info">' +
-      '<div class="detalle__linea">' + nombreLinea(producto.linea) + '</div>' +
-      '<h1 class="titulo detalle__nombre">' + producto.nombre + '</h1>' +
-      '<div class="detalle__precio">' + formatearPrecio(producto.precio) + '</div>' +
+      '<div class="detalle__linea">' + nombreCategoria(producto.categoria) + "</div>" +
+      '<h1 class="titulo detalle__nombre">' + producto.nombre + "</h1>" +
+      (precio ? '<div class="detalle__precio">' + precio + "</div>" : "") +
       '<div class="detalle__separador"></div>' +
-      '<p class="detalle__descripcion">' + descripcion + '</p>' +
-      '<dl class="detalle__specs">' +
-        '<div><dt>Material</dt><dd>' + producto.material + '</dd></div>' +
-        '<div><dt>Referencia</dt><dd translate="no">' + producto.ref + '</dd></div>' +
-        '<div><dt>Disponibilidad</dt><dd>' + disponibilidad + '</dd></div>' +
-      '</dl>' +
+      '<p class="detalle__descripcion">' + descripcion + "</p>" +
+      specsHTML +
       '<a class="detalle__cta" href="' + enlaceWhatsApp(producto) + '" target="_blank" rel="noopener">' +
-        ICONO_WSP + '<span>Consultar por WhatsApp</span>' +
-      '</a>' +
-      '<p class="detalle__nota">Envío asegurado · Certificado de autenticidad incluido</p>' +
-    '</div>';
+        ICONO_WSP + "<span>Consultar por WhatsApp</span>" +
+      "</a>" +
+      '<p class="detalle__nota">Envío asegurado a toda Colombia · Certificado de autenticidad incluido</p>' +
+    "</div>";
 
-  // Manejo de la imagen: si no existe, muestra el mismo espacio elegante
+  // Si la foto no existe (o no hay), muestra el espacio elegante
+  var marco = contenedor.querySelector(".detalle__marco");
   var foto = contenedor.querySelector(".detalle__foto");
-  foto.addEventListener("error", function () {
-    foto.remove();
-    var pendiente = document.createElement("div");
-    pendiente.className = "producto__pendiente";
-    pendiente.innerHTML = "<b>L</b><span>Imagen pendiente</span>";
-    contenedor.querySelector(".detalle__marco").appendChild(pendiente);
+  function marcoPendiente() {
+    marco.innerHTML = '<div class="producto__pendiente"><b>L</b><span>Imagen pendiente</span></div>';
+  }
+  if (foto) foto.addEventListener("error", marcoPendiente);
+  else marcoPendiente();
+
+  // Al pulsar una miniatura, cambia la foto principal
+  contenedor.querySelectorAll(".detalle__thumb").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var principal = contenedor.querySelector(".detalle__foto");
+      if (principal) principal.src = btn.dataset.src;
+      contenedor.querySelectorAll(".detalle__thumb").forEach(function (b) { b.classList.remove("activo"); });
+      btn.classList.add("activo");
+    });
   });
 
   // Piezas relacionadas: hasta 3 de la misma categoría (excluyendo la actual)
@@ -138,6 +203,7 @@ function iniciarDetalle() {
     .filter(function (p) { return p.categoria === producto.categoria && p.id !== producto.id; })
     .slice(0, 3);
   var rejilla = document.getElementById("rejilla-relacionados");
+  if (rejilla) rejilla.innerHTML = ""; // limpia por si venimos de otra pieza
   if (rejilla && relacionados.length) {
     relacionados.forEach(function (p) { rejilla.appendChild(tarjetaProducto(p)); });
   } else if (rejilla) {
@@ -155,7 +221,7 @@ function iniciarCatalogo() {
   if (!rejilla) return;
 
   var filtroCategoria = "todas";
-  var filtroLinea = "todas";
+  var filtroGenero = "todas";
 
   // Si la URL trae #anillos (o ?categoria=anillos), arranca filtrado
   var inicial = location.hash.replace("#", "") ||
@@ -183,11 +249,12 @@ function iniciarCatalogo() {
     contenedorFiltros.appendChild(boton);
   });
 
-  // botones de línea
-  document.querySelectorAll("#filtros-linea button").forEach(function (boton) {
+  // botones de género (mujer / hombre). Las piezas "unisex"
+  // aparecen tanto en Mujer como en Hombre.
+  document.querySelectorAll("#filtros-genero button").forEach(function (boton) {
     boton.addEventListener("click", function () {
-      filtroLinea = boton.dataset.linea;
-      document.querySelectorAll("#filtros-linea button").forEach(function (b) { b.classList.remove("activo"); });
+      filtroGenero = boton.dataset.genero;
+      document.querySelectorAll("#filtros-genero button").forEach(function (b) { b.classList.remove("activo"); });
       boton.classList.add("activo");
       pintar();
     });
@@ -196,8 +263,9 @@ function iniciarCatalogo() {
   function pintar() {
     rejilla.innerHTML = "";
     var visibles = PRODUCTOS.filter(function (p) {
-      return (filtroCategoria === "todas" || p.categoria === filtroCategoria) &&
-             (filtroLinea === "todas" || p.linea === filtroLinea);
+      var okCategoria = filtroCategoria === "todas" || p.categoria === filtroCategoria;
+      var okGenero = filtroGenero === "todas" || p.genero === filtroGenero || p.genero === "unisex";
+      return okCategoria && okGenero;
     });
     if (!visibles.length) {
       rejilla.innerHTML = '<p class="sin-resultados">No hay piezas en esta selección por el momento.</p>';

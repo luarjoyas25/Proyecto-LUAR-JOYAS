@@ -1,32 +1,49 @@
 /* ============================================================
    LUAR JOYAS — CATÁLOGO DE PRODUCTOS
    ============================================================
-   Este es el ÚNICO archivo que necesitas editar para:
-   - Cambiar precios
-   - Agregar o quitar productos
-   - Cambiar las imágenes
+   Este es el ÚNICO archivo que necesitas editar para el catálogo:
+   productos, precios, fotos, materiales, descripciones y contacto.
 
-   CÓMO AGREGAR UN PRODUCTO:
-   Copia un bloque { ... }, (incluida la coma final) y cambia los datos.
+   ------------------------------------------------------------
+   CÓMO FUNCIONAN LOS CAMPOS "OPCIONALES"
+   ------------------------------------------------------------
+   precio, material, referencia y descripcion son OPCIONALES.
+   - Si los dejas vacíos ("") o el precio en 0, NO aparecen en la
+     web y el diseño se ve limpio, como si no existieran.
+   - Cuando quieras mostrarlos, solo escribe el valor entre las
+     comillas (o el número en el precio) y aparecerán solos.
 
-   CÓMO PONER LA IMAGEN DE UN PRODUCTO:
+   Ejemplo — producto sin precio ni descripción todavía:
+       precio: 0,  material: "",  descripcion: "",
+   Ejemplo — el mismo producto cuando ya tienes los datos:
+       precio: 250000,  material: "Plata Ley 925",
+       descripcion: "Anillo con esmeralda central y circones.",
+
+   ------------------------------------------------------------
+   CÓMO PONER LAS FOTOS
+   ------------------------------------------------------------
    1. Guarda la foto en la carpeta  img/productos/
-   2. Escribe el nombre exacto del archivo en "imagen"
-      Ejemplo:  imagen: "anillo-solitario.jpg"
-   Si la imagen no existe todavía, la web muestra un espacio
+   2. Escribe el nombre exacto del archivo dentro de "imagenes".
+   Cada producto admite VARIAS fotos: la primera es la principal
+   y las demás aparecen como miniaturas en la página del producto.
+       imagenes: ["anillo-bianca.jpeg"],                    (1 foto)
+       imagenes: ["anillo-bianca.jpeg", "anillo-bianca-2.jpeg"], (2 fotos)
+   Si una foto no existe todavía, la web muestra un espacio
    elegante con el monograma — no se daña nada.
 
-   CAMPOS:
-   - id:        número único, no lo repitas
-   - ref:       referencia interna de la pieza (aparece en la web)
-   - nombre:    nombre de la joya
-   - categoria: "cadenas" | "anillos" | "candongas" | "topos" | "dijes" | "pulsos"
-   - linea:     "alta"  (Alta Joyería: piezas de lujo hechas a mano)
-                "atelier" (Joyería: manufactura industrial de calidad — nombre editable abajo en CONFIG)
-   - material:  texto libre, ej: "Oro 18k · Esmeralda"
-   - precio:    número SIN puntos ni signo $. Ej: 2500000
-   - imagen:    nombre del archivo dentro de img/productos/
-   - destacado: true = aparece en la página de inicio. Máximo 4.
+   ------------------------------------------------------------
+   CAMPOS DE CADA PRODUCTO
+   ------------------------------------------------------------
+   - id:          número único, no lo repitas
+   - nombre:      nombre de la joya (aparece en la web)
+   - categoria:   "cadenas" | "anillos" | "candongas" | "topos" | "dijes" | "pulsos"
+   - genero:      "mujer" | "hombre" | "unisex"
+   - precio:      número SIN puntos ni signo $ (0 = oculto). Ej: 250000
+   - material:    opcional. Ej: "Plata Ley 925"
+   - referencia:  opcional. Código interno de la pieza. Ej: "LJ-AN-01"
+   - descripcion: opcional. Texto libre sobre la pieza.
+   - imagenes:    lista de nombres de archivo dentro de img/productos/
+   - destacado:   true = aparece en la página de inicio (máximo 4)
    ============================================================ */
 
 const CONFIG = {
@@ -75,47 +92,64 @@ const CONFIG = {
 
 const PRODUCTOS = [
 
-  /* ------------------- CADENAS ------------------- */
-  { id: 1,  ref: "LJ-CA-01", nombre: "Cadena Ría",        categoria: "cadenas",   linea: "alta",    material: "Oro amarillo 18k",            precio: 3850000, imagen: "cadena-01.jpg", destacado: true  },
-  { id: 2,  ref: "LJ-CA-02", nombre: "Cadena Vestigio",   categoria: "cadenas",   linea: "alta",    material: "Oro blanco 18k",              precio: 4200000, imagen: "cadena-02.jpg", destacado: false },
-  { id: 3,  ref: "LJ-CA-03", nombre: "Cadena Trenza",     categoria: "cadenas",   linea: "atelier", material: "Oro amarillo 18k",            precio: 1680000, imagen: "cadena-03.jpg", destacado: false },
-  { id: 4,  ref: "LJ-CA-04", nombre: "Cadena Eslabón",    categoria: "cadenas",   linea: "atelier", material: "Plata 950 con baño de oro",   precio: 890000,  imagen: "cadena-04.jpg", destacado: false },
-  { id: 5,  ref: "LJ-CA-05", nombre: "Cadena Fina Luz",   categoria: "cadenas",   linea: "atelier", material: "Oro amarillo 18k",            precio: 1150000, imagen: "cadena-05.jpg", destacado: false },
+  /* ------------------- ANILLOS (mujer) ------------------- */
+  { id: 1,  nombre: "Anillo Bianca Esmeralda y Circones", categoria: "anillos", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["anillo-bianca-esmeralda-circones.jpeg"], destacado: true  },
+  { id: 2,  nombre: "Anillo de Compromiso 6mm",           categoria: "anillos", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["anillo-compromiso-6mm.jpeg"],           destacado: false },
+  { id: 3,  nombre: "Anillo Elisa Esmeralda y Circones",  categoria: "anillos", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["anillo-elisa-esmeralda-circones.jpeg"],  destacado: false },
+  { id: 4,  nombre: "Anillo Medio Sin Fin",               categoria: "anillos", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["anillo-medio-sin-fin.jpeg"],              destacado: false },
+  { id: 5,  nombre: "Anillo Mia Esmeralda y Circones",    categoria: "anillos", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["anillo-mia-esmeralda-circones.jpeg"],    destacado: false },
 
-  /* ------------------- ANILLOS ------------------- */
-  { id: 6,  ref: "LJ-AN-01", nombre: "Anillo Solar",      categoria: "anillos",   linea: "alta",    material: "Oro 18k · Esmeralda colombiana", precio: 7900000, imagen: "anillo-01.jpg", destacado: true  },
-  { id: 7,  ref: "LJ-AN-02", nombre: "Anillo Cauce",      categoria: "anillos",   linea: "alta",    material: "Oro blanco 18k · Diamante",   precio: 9500000, imagen: "anillo-02.jpg", destacado: false },
-  { id: 8,  ref: "LJ-AN-03", nombre: "Anillo Sello Alto", categoria: "anillos",   linea: "atelier", material: "Oro amarillo 18k",            precio: 2100000, imagen: "anillo-03.jpg", destacado: false },
-  { id: 9,  ref: "LJ-AN-04", nombre: "Anillo Media Luna", categoria: "anillos",   linea: "atelier", material: "Oro rosado 18k",              precio: 1750000, imagen: "anillo-04.jpg", destacado: false },
-  { id: 10, ref: "LJ-AN-05", nombre: "Anillo Trinidad",   categoria: "anillos",   linea: "atelier", material: "Oro tres tonos 18k",          precio: 2450000, imagen: "anillo-05.jpg", destacado: false },
+  /* ------------------- CADENAS (hombre) ------------------- */
+  { id: 6,  nombre: "Cadena Barbara Balines", categoria: "cadenas", genero: "hombre", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["cadena-barbara-balines.jpeg"],    destacado: false },
+  { id: 7,  nombre: "Cadena Militar",         categoria: "cadenas", genero: "hombre", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["cadena-militar.jpeg"],            destacado: true  },
+  { id: 8,  nombre: "Cadena Mini Cubana",     categoria: "cadenas", genero: "hombre", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["cadena-mini-cubana-hombre.avif"], destacado: false },
+  { id: 9,  nombre: "Cadena Rolón",           categoria: "cadenas", genero: "hombre", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["cadena-rolon.jpeg"],              destacado: false },
+  { id: 10, nombre: "Rosario",                categoria: "cadenas", genero: "hombre", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["rosario.png"],                    destacado: false },
 
-  /* ------------------ CANDONGAS ------------------ */
-  { id: 11, ref: "LJ-CD-01", nombre: "Candongas Aura",    categoria: "candongas", linea: "alta",    material: "Oro 18k · Diamantes",         precio: 5600000, imagen: "candonga-01.jpg", destacado: true  },
-  { id: 12, ref: "LJ-CD-02", nombre: "Candongas Río",     categoria: "candongas", linea: "atelier", material: "Oro amarillo 18k",            precio: 1350000, imagen: "candonga-02.jpg", destacado: false },
-  { id: 13, ref: "LJ-CD-03", nombre: "Candongas Torzal",  categoria: "candongas", linea: "atelier", material: "Oro amarillo 18k",            precio: 1580000, imagen: "candonga-03.jpg", destacado: false },
-  { id: 14, ref: "LJ-CD-04", nombre: "Candongas Delta",   categoria: "candongas", linea: "atelier", material: "Oro blanco 18k",              precio: 1420000, imagen: "candonga-04.jpg", destacado: false },
-  { id: 15, ref: "LJ-CD-05", nombre: "Candongas Plenas",  categoria: "candongas", linea: "alta",    material: "Oro 18k · Zafiros",           precio: 4800000, imagen: "candonga-05.jpg", destacado: false },
+  /* ------------------- CADENAS (mujer) ------------------- */
+  { id: 11, nombre: "Cadena Cola de Ratón", categoria: "cadenas", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["cadena-cola-raton.jpeg"],       destacado: false },
+  { id: 12, nombre: "Cadena Corazones",     categoria: "cadenas", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["cadena-corazones.jpeg"],        destacado: false },
+  { id: 13, nombre: "Cadena Mini Hermes",   categoria: "cadenas", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["cadena-mini-hermes.jpeg"],      destacado: false },
+  { id: 14, nombre: "Cadena Minicubana",    categoria: "cadenas", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["cadena-minicubana-mujer.jpeg"], destacado: false },
+  { id: 15, nombre: "Cadena Singapur",      categoria: "cadenas", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["cadena-singapur.jpeg"],         destacado: false },
 
-  /* -------------------- TOPOS -------------------- */
-  { id: 16, ref: "LJ-TO-01", nombre: "Topos Estela",      categoria: "topos",     linea: "alta",    material: "Oro blanco 18k · Diamantes",  precio: 3900000, imagen: "topo-01.jpg", destacado: false },
-  { id: 17, ref: "LJ-TO-02", nombre: "Topos Grano de Oro",categoria: "topos",     linea: "atelier", material: "Oro amarillo 18k",            precio: 620000,  imagen: "topo-02.jpg", destacado: false },
-  { id: 18, ref: "LJ-TO-03", nombre: "Topos Cardinal",    categoria: "topos",     linea: "atelier", material: "Oro rosado 18k",              precio: 780000,  imagen: "topo-03.jpg", destacado: false },
-  { id: 19, ref: "LJ-TO-04", nombre: "Topos Halo",        categoria: "topos",     linea: "alta",    material: "Oro 18k · Esmeraldas",        precio: 4300000, imagen: "topo-04.jpg", destacado: false },
-  { id: 20, ref: "LJ-TO-05", nombre: "Topos Punto Luz",   categoria: "topos",     linea: "atelier", material: "Oro blanco 18k · Zirconia",   precio: 540000,  imagen: "topo-05.jpg", destacado: false },
+  /* ------------------ CANDONGAS (mujer) ------------------ */
+  /* NOTA: 3 candongas llegaron sin nombre en el archivo del cliente.
+     Se dejaron como "Candonga I / II / III" — reemplázalos por el
+     nombre real cuando lo tengas. */
+  { id: 16, nombre: "Candonga I",         categoria: "candongas", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["candonga-01.avif"],       destacado: false },
+  { id: 17, nombre: "Candonga Melcocha",  categoria: "candongas", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["candonga-melcocha.avif"],  destacado: true  },
+  { id: 18, nombre: "Candonga II",        categoria: "candongas", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["candonga-02.avif"],       destacado: false },
+  { id: 19, nombre: "Candonga III",       categoria: "candongas", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["candonga-03.avif"],       destacado: false },
+  { id: 20, nombre: "Candongas Balines",  categoria: "candongas", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["candongas-balines.avif"], destacado: false },
 
-  /* -------------------- DIJES -------------------- */
-  { id: 21, ref: "LJ-DI-01", nombre: "Dije Luna Creciente", categoria: "dijes",   linea: "alta",    material: "Oro 18k · Madreperla",        precio: 2900000, imagen: "dije-01.jpg", destacado: true  },
-  { id: 22, ref: "LJ-DI-02", nombre: "Dije Inicial",      categoria: "dijes",     linea: "atelier", material: "Oro amarillo 18k",            precio: 680000,  imagen: "dije-02.jpg", destacado: false },
-  { id: 23, ref: "LJ-DI-03", nombre: "Dije Corazón Pleno",categoria: "dijes",     linea: "atelier", material: "Oro rosado 18k",              precio: 850000,  imagen: "dije-03.jpg", destacado: false },
-  { id: 24, ref: "LJ-DI-04", nombre: "Dije Cruz Fina",    categoria: "dijes",     linea: "atelier", material: "Oro amarillo 18k",            precio: 720000,  imagen: "dije-04.jpg", destacado: false },
-  { id: 25, ref: "LJ-DI-05", nombre: "Dije Gota Esmeralda", categoria: "dijes",   linea: "alta",    material: "Oro 18k · Esmeralda colombiana", precio: 5200000, imagen: "dije-05.jpg", destacado: false },
+  /* -------------------- DIJES (unisex) -------------------- */
+  { id: 21, nombre: "Dije Avión",                categoria: "dijes", genero: "unisex", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["dije-avion.avif"],                destacado: false },
+  { id: 22, nombre: "Dije Corazón",              categoria: "dijes", genero: "unisex", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["dije-corazon.avif"],              destacado: true  },
+  { id: 23, nombre: "Dije Cruz con Circones Blancos", categoria: "dijes", genero: "unisex", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["dije-cruz-circones-blancos.avif"], destacado: false },
+  { id: 24, nombre: "Dije Cruz",                 categoria: "dijes", genero: "unisex", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["dije-cruz.avif"],                 destacado: false },
+  { id: 25, nombre: "Dije Hoja de Árbol",        categoria: "dijes", genero: "unisex", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["dije-hoja-de-arbol.avif"],        destacado: false },
 
-  /* -------------------- PULSOS ------------------- */
-  { id: 26, ref: "LJ-PU-01", nombre: "Pulso Cordón Real", categoria: "pulsos",    linea: "alta",    material: "Oro amarillo 18k",            precio: 4600000, imagen: "pulso-01.jpg", destacado: false },
-  { id: 27, ref: "LJ-PU-02", nombre: "Pulso Riel",        categoria: "pulsos",    linea: "atelier", material: "Oro amarillo 18k",            precio: 1950000, imagen: "pulso-02.jpg", destacado: false },
-  { id: 28, ref: "LJ-PU-03", nombre: "Pulso Tejido",      categoria: "pulsos",    linea: "atelier", material: "Oro blanco 18k",              precio: 2200000, imagen: "pulso-03.jpg", destacado: false },
-  { id: 29, ref: "LJ-PU-04", nombre: "Pulso Esclava Lisa",categoria: "pulsos",    linea: "atelier", material: "Oro amarillo 18k",            precio: 1680000, imagen: "pulso-04.jpg", destacado: false },
-  { id: 30, ref: "LJ-PU-05", nombre: "Pulso Constelar",   categoria: "pulsos",    linea: "alta",    material: "Oro 18k · Diamantes",         precio: 8400000, imagen: "pulso-05.jpg", destacado: false },
+  /* -------------------- PULSOS (hombre) ------------------- */
+  { id: 26, nombre: "Pulsera Bismark",       categoria: "pulsos", genero: "hombre", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["pulsera-bismark.avif"],       destacado: false },
+  { id: 27, nombre: "Pulsera Cubana Ancha",  categoria: "pulsos", genero: "hombre", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["pulsera-cubana-ancha.avif"],  destacado: false },
+  { id: 28, nombre: "Pulsera Doble Eslabón", categoria: "pulsos", genero: "hombre", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["pulsera-doble-eslabon.avif"], destacado: false },
+  { id: 29, nombre: "Pulsera Franco",        categoria: "pulsos", genero: "hombre", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["pulsera-franco.avif"],        destacado: false },
+  { id: 30, nombre: "Pulsera Gucci",         categoria: "pulsos", genero: "hombre", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["pulsera-gucci.avif"],         destacado: false },
+
+  /* -------------------- PULSOS (mujer) -------------------- */
+  { id: 31, nombre: "Pulsera Amor Eterno",       categoria: "pulsos", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["pulsera-amor-eterno.jpg"],        destacado: false },
+  { id: 32, nombre: "Pulsera Cartier",           categoria: "pulsos", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["pulsera-cartier.webp"],          destacado: false },
+  { id: 33, nombre: "Pulsera con Dijes Rojos",   categoria: "pulsos", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["pulsera-con-dijes-rojos.avif"],  destacado: false },
+  { id: 34, nombre: "Pulsera Corazones",         categoria: "pulsos", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["pulsera-corazones.jpg"],         destacado: false },
+  { id: 35, nombre: "Pulsera Bolita Punto 1mm",  categoria: "pulsos", genero: "mujer", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["pulsera-bolita-punto-1mm.webp"], destacado: false },
+
+  /* -------------------- TOPOS (unisex) -------------------- */
+  { id: 36, nombre: "Topo Balín Diamantado",     categoria: "topos", genero: "unisex", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["topo-balin-diamantado.jpg"],     destacado: false },
+  { id: 37, nombre: "Topo Rolex",                categoria: "topos", genero: "unisex", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["topo-rolex.jpg"],                destacado: false },
+  { id: 38, nombre: "Topos de Tortuga",          categoria: "topos", genero: "unisex", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["topos-de-tortuga.avif"],         destacado: false },
+  { id: 39, nombre: "Topos Virgen de Guadalupe", categoria: "topos", genero: "unisex", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["topos-virgen-guadalupe.avif"],   destacado: false },
+  { id: 40, nombre: "Topo Corazón con Piedra Circón", categoria: "topos", genero: "unisex", precio: 0, material: "", referencia: "", descripcion: "", imagenes: ["topo-corazon-piedra-circon.avif"], destacado: true },
 ];
 
 /* Nombres visibles de cada categoría (orden del menú del catálogo) */
