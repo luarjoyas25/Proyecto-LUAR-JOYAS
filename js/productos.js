@@ -66,9 +66,9 @@ const CONFIG = {
   // cliente los envíe. Ejemplo: instagram: "https://instagram.com/luarjoyas"
   // Mientras estén vacíos, el botón se muestra pero sin enlace.
   redes: {
-    tiktok: "",
-    facebook: "",
-    instagram: "",
+    tiktok: "https://www.tiktok.com/@luarjoyas",
+    facebook: "https://www.facebook.com/profile.php?id=61591530045826",
+    instagram: "https://www.instagram.com/luarjoyas25/",
     // WhatsApp usa automáticamente el número de arriba, no necesita link
   },
 };
@@ -129,46 +129,108 @@ const CATEGORIAS = [
 ];
 
 /* ============================================================
-   PREGUNTAS FRECUENTES (página faq.html)
-   Para editar: cambia el texto de "pregunta" o "respuesta".
-   Para agregar una: copia un bloque { pregunta: ..., respuesta: ... },
-   completo (incluida la coma) y cambia los textos.
+   GUÍA LUAR JOYAS (página faq.html)
+   Las preguntas están organizadas por secciones.
+   - Para editar una respuesta: cambia el texto de "respuesta".
+   - Para agregar una pregunta: copia un bloque
+     { pregunta: "...", respuesta: "..." }, dentro de la sección.
+   - Para agregar una sección nueva: copia un bloque
+     { seccion: "...", items: [ ... ] }, completo.
+   - Para un salto de línea dentro de una respuesta usa \n
    ============================================================ */
-const PREGUNTAS = [
+const GUIA = [
   {
-    pregunta: "¿En qué materiales están hechas sus joyas?",
-    respuesta: "Trabajamos principalmente en oro de 18k en sus distintos tonos, plata 950 y piedras preciosas seleccionadas, incluida la esmeralda colombiana. (Respuesta provisional — pendiente confirmación del cliente.)",
+    seccion: "Materiales y Calidad",
+    items: [
+      {
+        pregunta: "¿Qué materiales utilizan en Luar Joyas?",
+        respuesta: "Cada pieza es elaborada en oro de 18 quilates (18K) o plata ley 925, metales preciosos reconocidos por su belleza, resistencia y valor. Seleccionamos materiales de alta calidad para crear joyas destinadas a perdurar.",
+      },
+      {
+        pregunta: "¿Qué es el oro de 18K?",
+        respuesta: "El oro de 18K está compuesto por un 75 % de oro puro y un 25 % de otros metales que aportan mayor resistencia. Es uno de los estándares más valorados en la alta joyería por su equilibrio entre lujo y durabilidad.",
+      },
+      {
+        pregunta: "¿Qué es la plata ley 925?",
+        respuesta: "La plata ley 925 contiene un 92,5 % de plata pura, garantizando una joya fina, resistente y con el brillo característico de la plata auténtica.",
+      },
+      {
+        pregunta: "¿Qué es la Alta Joyería?",
+        respuesta: "La alta joyería representa la excelencia del arte joyero. Combina metales preciosos, piedras de calidad excepcional y un proceso artesanal donde cada detalle es trabajado con precisión para crear piezas únicas y atemporales.",
+      },
+    ],
   },
   {
-    pregunta: "¿Cuál es la diferencia entre la Alta Joyería y la Joyería?",
-    respuesta: "La Alta Joyería reúne piezas de lujo concebidas y elaboradas a mano, una a una, por nuestros orfebres. La Joyería lleva los mismos criterios de calidad y los mismos materiales a piezas de manufactura industrial de precisión, con precios más accesibles. (Respuesta provisional.)",
+    seccion: "Personalización",
+    items: [
+      {
+        pregunta: "¿Diseñan joyas personalizadas?",
+        respuesta: "Cada historia merece una joya única.\nCreamos piezas exclusivas a partir de tus ideas, recuerdos o momentos especiales. Podemos incorporar nombres, iniciales, fechas, piedras preciosas o desarrollar un diseño completamente nuevo junto a ti.",
+      },
+      {
+        pregunta: "¿Fabrican joyas a la medida?",
+        respuesta: "Cada pieza puede adaptarse a las necesidades de quien la llevará. Ajustamos medidas y detalles para lograr una joya cómoda, armónica y personalizada.",
+      },
+      {
+        pregunta: "¿Realizan anillos de compromiso y argollas de matrimonio?",
+        respuesta: "Diseñamos anillos de compromiso y argollas totalmente personalizadas para representar uno de los momentos más importantes de la vida.",
+      },
+    ],
   },
   {
-    pregunta: "¿Cómo sé cuál es mi talla de anillo?",
-    respuesta: "Escríbenos por WhatsApp y te guiamos paso a paso para medir tu talla desde casa. (Respuesta provisional.)",
+    seccion: "Guías",
+    items: [
+      {
+        pregunta: "Guía de tallas para anillos",
+        respuesta: "Para conocer tu talla puedes:\n• Medir el diámetro interno de un anillo que utilices habitualmente.\n• Rodear tu dedo con una tira de papel, marcar el punto donde se unen los extremos y medir la longitud obtenida.\nCon esta información podrás consultar nuestra guía de tallas o recibir asesoría personalizada por parte de nuestro equipo.",
+      },
+      {
+        pregunta: "Guía de longitudes para cadenas",
+        respuesta: "40 cm – Choker o ajustada al cuello.\n45 cm – Largo clásico.\n50 cm – A la altura de la clavícula.\n55 cm – Sobre el pecho.\n60 cm – Largo elegante.\nTambién fabricamos cadenas en medidas especiales bajo solicitud.",
+      },
+    ],
   },
   {
-    pregunta: "¿Hacen piezas personalizadas o a la medida?",
-    respuesta: "Sí. Realizamos encargos y diseños a medida. Cuéntanos tu idea por WhatsApp y te indicamos tiempos y valores. (Respuesta provisional.)",
+    seccion: "Compras y Envíos",
+    items: [
+      {
+        pregunta: "Envíos",
+        respuesta: "Realizamos envíos seguros a cualquier ciudad o municipio de Colombia mediante transportadoras aliadas.",
+      },
+      {
+        pregunta: "Tiempo de entrega",
+        respuesta: "Las joyas disponibles en inventario se despachan en el menor tiempo posible.\nLas piezas personalizadas o fabricadas bajo pedido requieren un tiempo adicional de producción, el cual será informado al confirmar la compra.",
+      },
+      {
+        pregunta: "Métodos de pago",
+        respuesta: "Aceptamos pagos mediante:\n• Bancolombia\n• Davivienda\n• Banco de Bogotá\n• Nequi\n• Daviplata",
+      },
+    ],
   },
   {
-    pregunta: "¿Hacen envíos a todo el país? ¿Cuánto demoran?",
-    respuesta: "Enviamos de forma asegurada a toda Colombia. Los tiempos varían según la ciudad de destino. (Respuesta provisional — pendiente transportadora y tiempos.)",
+    seccion: "Garantía y Certificados",
+    items: [
+      {
+        pregunta: "Garantía LUAR Joyas",
+        respuesta: "Cada joya está respaldada por nuestro compromiso con la calidad.\n• Garantía de por vida sobre la autenticidad y pureza del oro 18K y la plata ley 925.\n• Un (1) año de garantía por defectos de fabricación.\nLa garantía no cubre daños ocasionados por golpes, rayones, caídas, modificaciones realizadas por terceros ni desgaste derivado del uso normal.",
+      },
+      {
+        pregunta: "Certificado de autenticidad",
+        respuesta: "Cada joya se entrega con un Certificado de Autenticidad Luar Joyas, donde se garantiza la pureza del metal utilizado.\nCuando la pieza incorpora piedras preciosas, se entrega además el certificado emitido por una institución gemológica autorizada, según corresponda.",
+      },
+    ],
   },
   {
-    pregunta: "¿Qué métodos de pago aceptan?",
-    respuesta: "(Respuesta pendiente del cliente: transferencia, efectivo, Nequi/Daviplata, etc.)",
-  },
-  {
-    pregunta: "¿Las joyas tienen garantía?",
-    respuesta: "(Respuesta pendiente del cliente: tiempo de garantía y qué cubre.)",
-  },
-  {
-    pregunta: "¿Cómo debo cuidar mis joyas?",
-    respuesta: "Evita el contacto con perfumes, cloro y químicos; guarda cada pieza por separado en un lugar seco. Con cada joya entregamos recomendaciones de cuidado. (Respuesta provisional.)",
-  },
-  {
-    pregunta: "¿Cómo hago un pedido?",
-    respuesta: "Elige la pieza en el catálogo, pulsa \"Consultar\" y te atendemos directamente por WhatsApp para coordinar pago y envío.",
+    seccion: "Cuidado de las Joyas",
+    items: [
+      {
+        pregunta: "¿Cómo conservar el brillo de mi joya?",
+        respuesta: "Para preservar su belleza recomendamos:\n• Evitar el contacto con perfumes, cremas, cloro y productos químicos.\n• Guardarla en un lugar seco y protegida cuando no esté en uso.\n• Limpiarla periódicamente con un paño especial para joyería.\n• Retirarla durante actividades que puedan ocasionar golpes o desgaste.",
+      },
+      {
+        pregunta: "Servicio de mantenimiento",
+        respuesta: "También ofrecemos servicios de limpieza, pulido, restauración y reparación para ayudar a conservar tus joyas en excelentes condiciones con el paso del tiempo.",
+      },
+    ],
   },
 ];

@@ -239,21 +239,37 @@ function iniciarCategoriasInicio() {
   });
 }
 
-/* ---------- preguntas frecuentes (se editan en productos.js) ---------- */
+/* ---------- Guía Luar Joyas (se edita en productos.js) ---------- */
 
 function iniciarFaq() {
   var lista = document.getElementById("lista-faq");
-  if (!lista || typeof PREGUNTAS === "undefined") return;
-  PREGUNTAS.forEach(function (item) {
-    var bloque = document.createElement("details");
-    var titulo = document.createElement("summary");
-    titulo.textContent = item.pregunta;
-    var cuerpo = document.createElement("div");
-    cuerpo.className = "respuesta";
-    cuerpo.textContent = item.respuesta;
-    bloque.appendChild(titulo);
-    bloque.appendChild(cuerpo);
-    lista.appendChild(bloque);
+  if (!lista || typeof GUIA === "undefined") return;
+
+  GUIA.forEach(function (grupo) {
+    // título de la sección (Materiales, Personalización, etc.)
+    var tituloSeccion = document.createElement("h2");
+    tituloSeccion.className = "faq__seccion revela";
+    tituloSeccion.textContent = grupo.seccion;
+    lista.appendChild(tituloSeccion);
+
+    grupo.items.forEach(function (item) {
+      var bloque = document.createElement("details");
+      bloque.className = "faq__item";
+      var titulo = document.createElement("summary");
+      titulo.textContent = item.pregunta;
+      var cuerpo = document.createElement("div");
+      cuerpo.className = "respuesta";
+      // cada línea (\n) se convierte en su propio párrafo
+      item.respuesta.split("\n").forEach(function (linea) {
+        if (!linea.trim()) return;
+        var p = document.createElement("p");
+        p.textContent = linea;
+        cuerpo.appendChild(p);
+      });
+      bloque.appendChild(titulo);
+      bloque.appendChild(cuerpo);
+      lista.appendChild(bloque);
+    });
   });
 }
 

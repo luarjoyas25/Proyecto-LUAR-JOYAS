@@ -1098,6 +1098,21 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq summary:hover { color: var(--oro); }
 .faq .respuesta { padding: 0 34px 26px 0; color: var(--tinta-suave); font-size: 15.5px; line-height: 1.8; }
+.faq .respuesta p { margin: 0 0 8px; }
+.faq .respuesta p:last-child { margin-bottom: 0; }
+
+/* título de cada sección de la Guía (Materiales, Personalización…) */
+.faq__seccion {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--oro-texto);
+  margin: 54px 0 6px;
+  padding-bottom: 4px;
+}
+.faq__seccion:first-child { margin-top: 0; }
 
 /* ============================================================
    BOTÓN FLOTANTE DE WHATSAPP
