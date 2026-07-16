@@ -235,6 +235,10 @@ function pintarDetalle() {
       .slice(0, 3)
       .forEach(function (p) { rejilla.appendChild(tarjetaProducto(p)); });
   }
+
+  // las tarjetas recién creadas usan la animación de aparición:
+  // hay que registrarlas en el observador o quedarían invisibles
+  observarReveles();
 }
 
 /* ---------- catálogo con filtros ---------- */
