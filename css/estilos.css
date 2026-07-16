@@ -914,6 +914,44 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 }
 .detalle__specs dd { margin: 0; text-align: right; }
 
+/* -------- guía de medidas (desplegable en la ficha) -------- */
+
+.detalle__guia {
+  border: 1px solid var(--linea);
+  margin: 0 0 34px;
+}
+.detalle__guia summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  transition: color var(--transicion);
+}
+.detalle__guia summary::-webkit-details-marker { display: none; }
+.detalle__guia summary::after {
+  content: "+";
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--oro);
+  flex-shrink: 0;
+  transition: transform var(--transicion);
+}
+.detalle__guia[open] summary::after { transform: rotate(45deg); }
+.detalle__guia summary:hover { color: var(--oro-texto); }
+.detalle__guia img {
+  width: 100%;
+  display: block;
+  border-top: 1px solid var(--linea);
+}
+
 /* -------- botón grande de WhatsApp -------- */
 
 .detalle__cta {

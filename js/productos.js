@@ -88,6 +88,18 @@ const CONFIG = {
     instagram: "https://www.instagram.com/luarjoyas25/",
     // WhatsApp usa automáticamente el número de arriba, no necesita link
   },
+
+  // Guías de medidas que aparecen en la ficha del producto.
+  // Las imágenes viven en la carpeta  img/referencias/
+  // Se muestra la del género correspondiente; "unisex" muestra ambas.
+  // Para agregar una guía a otra categoría, copia un bloque completo:
+  //   anillos: { mujer: "tallas-anillos.jpg" },
+  guiasMedidas: {
+    cadenas: {
+      hombre: "medidas-cadena-hombre.avif",
+      mujer: "medidas-cadena-mujer.jpg",
+    },
+  },
 };
 
 const PRODUCTOS = [

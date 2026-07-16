@@ -159,6 +159,28 @@ function pintarDetalle() {
   if (producto.disponibilidad) filas += "<div><dt>Disponibilidad</dt><dd>" + producto.disponibilidad + "</dd></div>";
   var specsHTML = filas ? '<dl class="detalle__specs">' + filas + "</dl>" : "";
 
+  // Guía de medidas: si la categoría tiene guía en CONFIG.guiasMedidas,
+  // se muestra la imagen del género de la pieza ("unisex" muestra ambas)
+  var guiaHTML = "";
+  var guias = (CONFIG.guiasMedidas || {})[producto.categoria];
+  if (guias) {
+    var imagenesGuia = [];
+    if (producto.genero === "unisex") {
+      for (var g in guias) imagenesGuia.push(guias[g]);
+    } else if (guias[producto.genero]) {
+      imagenesGuia.push(guias[producto.genero]);
+    }
+    if (imagenesGuia.length) {
+      guiaHTML =
+        '<details class="detalle__guia">' +
+          "<summary>Guía de medidas</summary>" +
+          imagenesGuia.map(function (src) {
+            return '<img src="img/referencias/' + src + '" alt="Guía de medidas — ' + producto.nombre + '">';
+          }).join("") +
+        "</details>";
+    }
+  }
+
   contenedor.innerHTML =
     '<div class="detalle__galeria">' +
       '<div class="detalle__marco">' +
@@ -173,6 +195,7 @@ function pintarDetalle() {
       '<div class="detalle__separador"></div>' +
       '<p class="detalle__descripcion">' + descripcion + "</p>" +
       specsHTML +
+      guiaHTML +
       '<a class="detalle__cta" href="' + enlaceWhatsApp(producto) + '" target="_blank" rel="noopener">' +
         ICONO_WSP + "<span>Consultar por WhatsApp</span>" +
       "</a>" +
