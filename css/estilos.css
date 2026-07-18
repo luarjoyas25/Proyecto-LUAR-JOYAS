@@ -638,6 +638,7 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
   gap: clamp(24px, 3vw, 44px) clamp(18px, 2.4vw, 32px);
 }
 
+
 .producto { display: flex; flex-direction: column; }
 
 /* enlace clicable que envuelve la imagen y datos de la tarjeta */
@@ -700,8 +701,8 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 }
 
 .producto__linea {
-  font-size: 11px;
-  letter-spacing: .24em;
+  font-size: 12px;
+  letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--oro-texto);
   margin-bottom: 8px;
@@ -712,8 +713,8 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
   font-size: 21px;
   line-height: 1.2;
 }
-.producto__material { font-size: 13px; color: var(--gris); margin-top: 5px; }
-.producto__precio { font-size: 14.5px; margin-top: 10px; letter-spacing: .04em; }
+.producto__material { font-size: 13.5px; color: var(--gris); margin-top: 5px; }
+.producto__precio { font-size: 15px; margin-top: 10px; letter-spacing: .04em; }
 
 .producto__wsp {
   margin-top: 16px;
@@ -732,6 +733,19 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 }
 .producto__wsp:hover { background: var(--tinta); color: var(--marfil); border-color: var(--tinta); }
 .producto__wsp svg { width: 14px; height: 14px; fill: currentColor; }
+
+/* En móvil pequeño: 2 columnas para que las imágenes no sean enormes */
+@media (max-width: 520px) {
+  .rejilla-productos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 10px;
+  }
+  .producto__marco { margin-bottom: 10px; }
+  .producto__nombre { font-size: 16px; }
+  .producto__linea { font-size: 9.5px; letter-spacing: .16em; }
+  .producto__material { font-size: 12px; }
+  .producto__precio { font-size: 13px; }
+}
 
 /* ---------- filtros del catálogo ---------- */
 
@@ -1279,8 +1293,6 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 .pie__dev { font-size: 11px; letter-spacing: .1em; color: rgba(251,250,246,.3); }
 .pie__dev a { color: rgba(203,178,115,.38); transition: color var(--transicion); }
 .pie__dev a:hover { color: var(--oro-claro); }
-.pie__admin { opacity: .22; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; transition: opacity var(--transicion); }
-.pie__admin:hover { opacity: 1; }
 
 /* ============================================================
    FILTRO DE METAL (catálogo Plata / Oro)

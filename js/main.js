@@ -601,6 +601,8 @@ function iniciarIntro() {
 
 function mdToHtml(texto) {
   if (!texto) return "";
+  // Elimina etiquetas HTML crudas: las políticas son markdown puro
+  texto = texto.replace(/<[^>]+>/g, "");
   var lineas = texto.replace(/\r\n/g, "\n").split("\n");
   var html = "";
   var enLista = false;
