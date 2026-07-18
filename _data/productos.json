@@ -592,7 +592,7 @@
       "precio": 0,
       "material": "",
       "metal": "plata",
-      "destacado": true,
+      "destacado": false,
       "nombre": "Topo Corazón con Piedra Circón",
       "descripcion": "",
       "genero": "unisex",
