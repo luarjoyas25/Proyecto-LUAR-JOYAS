@@ -75,7 +75,13 @@ collections:
           - label: "Imágenes (en el orden en que aparecerán)"
             name: imagenes
             widget: list
-            hint: "Nombre exacto del archivo. Ej: galeria-taller.jpg — debe estar en img/galeria/"
+            hint: "Sube las fotos en el orden en que quieres que aparezcan en la galería."
+            field:
+              label: Foto
+              name: foto
+              widget: image
+              media_folder: "/img/galeria"
+              public_folder: "img/galeria"
 
   # ── PÁGINA NOSOTROS ────────────────────────────────────────────────────────
   - label: "Página Nosotros"
@@ -153,7 +159,7 @@ collections:
               - { label: "TikTok (URL completa)", name: tiktok, widget: string, required: false }
               - { label: "Facebook (URL completa)", name: facebook, widget: string, required: false }
               - { label: "Instagram (URL completa)", name: instagram, widget: string, required: false }
-          - label: "Guías de medidas (nombres de archivo en img/referencias/)"
+          - label: "Guías de medidas"
             name: guiasMedidas
             widget: object
             collapsed: true
@@ -162,8 +168,8 @@ collections:
                 name: cadenas
                 widget: object
                 fields:
-                  - { label: "Imagen para hombre", name: hombre, widget: string }
-                  - { label: "Imagen para mujer",  name: mujer,  widget: string }
+                  - { label: "Imagen para hombre", name: hombre, widget: image, media_folder: "/img/referencias", public_folder: "img/referencias", required: false }
+                  - { label: "Imagen para mujer",  name: mujer,  widget: image, media_folder: "/img/referencias", public_folder: "img/referencias", required: false }
 
   # ── GUÍA LUAR JOYAS (FAQ) ──────────────────────────────────────────────────
   - label: "Guía Luar Joyas (preguntas frecuentes)"

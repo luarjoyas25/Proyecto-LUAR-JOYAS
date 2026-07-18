@@ -35,10 +35,18 @@ function nombreCategoria(clave) {
   return c ? c.nombre : "";
 }
 
-// Normaliza una ruta de imagen de producto: acepta "foto.jpg" o "img/productos/foto.jpg"
+// Normaliza rutas de imagen: acepta solo el nombre o la ruta completa con prefijo de carpeta
 function rutaProducto(src) {
   if (!src) return "";
   return src.startsWith("img/") ? src : "img/productos/" + src;
+}
+function rutaGaleria(src) {
+  if (!src) return "";
+  return src.startsWith("img/") ? src : "img/galeria/" + src;
+}
+function rutaReferencia(src) {
+  if (!src) return "";
+  return src.startsWith("img/") ? src : "img/referencias/" + src;
 }
 
 // Primera imagen de un producto (la principal), o null si no tiene
@@ -181,7 +189,7 @@ function pintarDetalle() {
         '<details class="detalle__guia">' +
           "<summary>Guía de medidas</summary>" +
           imagenesGuia.map(function (src) {
-            return '<img src="img/referencias/' + src + '" alt="Guía de medidas — ' + producto.nombre + '">';
+            return '<img src="' + rutaReferencia(src) + '" alt="Guía de medidas — ' + producto.nombre + '">';
           }).join("") +
         "</details>";
     }
@@ -190,7 +198,7 @@ function pintarDetalle() {
   contenedor.innerHTML =
     '<div class="detalle__galeria">' +
       '<div class="detalle__marco">' +
-        (imgs.length ? '<img class="detalle__foto" src="img/productos/' + imgs[0] + '" alt="' + producto.nombre + ' — LUAR JOYAS">' : "") +
+        (imgs.length ? '<img class="detalle__foto" src="' + rutaProducto(imgs[0]) + '" alt="' + producto.nombre + ' — LUAR JOYAS">' : "") +
       "</div>" +
       thumbsHTML +
     "</div>" +
@@ -408,7 +416,7 @@ function iniciarGaleria() {
       var figura = document.createElement("figure");
       var numero = (idx + 1 < 10 ? "0" : "") + (idx + 1);
       var img = document.createElement("img");
-      img.src = "img/galeria/" + archivo;
+      img.src = rutaGaleria(archivo);
       img.alt = "LUAR JOYAS — galería " + numero;
       img.addEventListener("error", function () {
         img.remove();
