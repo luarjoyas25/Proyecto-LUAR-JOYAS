@@ -685,7 +685,10 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("_data/categorias.json").then(function (r) { return r.json(); }),
     fetch("_data/galeria.json").then(function (r) { return r.json(); }),
     fetch("_data/nosotros.json").then(function (r) { return r.json(); }),
-    fetch("_data/politicas.json").then(function (r) { return r.json(); })
+    fetch("_data/politica-reembolso.json").then(function (r) { return r.json(); }),
+    fetch("_data/politica-privacidad.json").then(function (r) { return r.json(); }),
+    fetch("_data/politica-terminos.json").then(function (r) { return r.json(); }),
+    fetch("_data/politica-envios.json").then(function (r) { return r.json(); })
   ]).then(function (res) {
     var ok = function (r) { return r.status === "fulfilled" ? r.value : null; };
 
@@ -695,7 +698,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var cats      = ok(res[3]);
     var galeria   = ok(res[4]);
     var nosotros  = ok(res[5]);
-    var politicas = ok(res[6]);
 
     if (config)    window.CONFIG     = config;
     if (productos) window.PRODUCTOS  = productos.productos;
@@ -703,7 +705,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (cats)      window.CATEGORIAS = cats;
     if (galeria)   window.GALERIA    = galeria;
     if (nosotros)  window.NOSOTROS   = nosotros;
-    if (politicas) window.POLITICAS  = politicas;
+
+    var pol = {};
+    if (ok(res[6])) pol.reembolso = ok(res[6]);
+    if (ok(res[7])) pol.privacidad = ok(res[7]);
+    if (ok(res[8])) pol.terminos   = ok(res[8]);
+    if (ok(res[9])) pol.envios     = ok(res[9]);
+    if (Object.keys(pol).length) window.POLITICAS = pol;
 
     iniciarBase();
     iniciarCategoriasInicio();

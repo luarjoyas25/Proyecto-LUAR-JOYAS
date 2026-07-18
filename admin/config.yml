@@ -22,14 +22,8 @@ collections:
             widget: list
             summary: "{{fields.nombre}} · {{fields.categoria}} · {{fields.metal}}"
             fields:
-              - label: "ID (número único, no repetir)"
-                name: id
-                widget: number
-                value_type: int
-                min: 1
-              - label: "Nombre del producto"
-                name: nombre
-                widget: string
+              - { label: "ID (número único, no repetir)", name: id, widget: number, value_type: int, min: 1 }
+              - { label: "Nombre del producto", name: nombre, widget: string }
               - label: "Categoría"
                 name: categoria
                 widget: select
@@ -54,36 +48,15 @@ collections:
                 options:
                   - { label: "Plata", value: "plata" }
                   - { label: "Oro",   value: "oro"   }
-              - label: "Precio en COP (0 = precio oculto)"
-                name: precio
-                widget: number
-                value_type: int
-                default: 0
-                min: 0
-              - label: "Material (descripción breve)"
-                name: material
-                widget: string
-                required: false
-                default: ""
-              - label: "Referencia interna"
-                name: referencia
-                widget: string
-                required: false
-                default: ""
-              - label: "Descripción del producto"
-                name: descripcion
-                widget: text
-                required: false
-                default: ""
+              - { label: "Precio en COP (0 = precio oculto)", name: precio, widget: number, value_type: int, default: 0, min: 0 }
+              - { label: "Material (descripción breve)", name: material, widget: string, required: false, default: "" }
+              - { label: "Referencia interna", name: referencia, widget: string, required: false, default: "" }
+              - { label: "Descripción del producto", name: descripcion, widget: text, required: false, default: "" }
               - label: "Fotos (primera foto = foto principal)"
                 name: imagenes
                 widget: list
-                hint: "Nombre exacto del archivo, sin ruta. Ej: anillo-bianca.jpeg — el archivo debe estar en img/productos/"
-              - label: "Destacado en portada"
-                name: destacado
-                widget: boolean
-                default: false
-                hint: "Activa para que aparezca en la sección de destacados de la página de inicio"
+                hint: "Nombre exacto del archivo. Ej: anillo-bianca.jpeg — el archivo debe estar en img/productos/"
+              - { label: "Destacado en portada", name: destacado, widget: boolean, default: false }
 
   # ── GALERÍA ───────────────────────────────────────────────────────────────
   - label: "Galería"
@@ -96,7 +69,7 @@ collections:
           - label: "Imágenes (en el orden en que aparecerán)"
             name: imagenes
             widget: list
-            hint: "Nombre exacto del archivo. Ej: galeria-taller.jpg — la foto debe estar en img/galeria/"
+            hint: "Nombre exacto del archivo. Ej: galeria-taller.jpg — debe estar en img/galeria/"
 
   # ── PÁGINA NOSOTROS ────────────────────────────────────────────────────────
   - label: "Página Nosotros"
@@ -106,89 +79,48 @@ collections:
         name: "nosotros"
         file: "_data/nosotros.json"
         fields:
-          - label: "Título principal"
-            name: titular
-            widget: string
-          - label: "Historia de la marca (separa párrafos con una línea en blanco)"
-            name: historia
-            widget: text
-            hint: "Cada párrafo separado por una línea en blanco"
-          - label: "Cita destacada (la que aparece en el bloque oscuro)"
-            name: cita
-            widget: text
-          - label: "Misión"
-            name: mision
-            widget: text
-          - label: "Visión"
-            name: vision
-            widget: text
-          - label: "El oficio"
-            name: oficio
-            widget: text
+          - { label: "Título principal", name: titular, widget: string }
+          - { label: "Historia de la marca (párrafos separados por línea en blanco)", name: historia, widget: text }
+          - { label: "Cita destacada (bloque oscuro central)", name: cita, widget: text }
+          - { label: "Misión", name: mision, widget: text }
+          - { label: "Visión", name: vision, widget: text }
+          - { label: "El oficio", name: oficio, widget: text }
 
-  # ── POLÍTICAS LEGALES ──────────────────────────────────────────────────────
-  - label: "Políticas legales"
+  # ── POLÍTICAS LEGALES (un archivo por política) ───────────────────────────
+  - label: "Políticas Legales"
     name: "politicas"
     files:
       - label: "Política de Reembolso"
         name: "reembolso"
-        file: "_data/politicas.json"
+        file: "_data/politica-reembolso.json"
         fields:
-          - label: "Política de Reembolso"
-            name: reembolso
-            widget: object
-            fields:
-              - { label: "Título de la página", name: titulo, widget: string }
-              - { label: "Fecha de vigencia (Ej: 17 de julio de 2026)", name: vigencia, widget: string }
-              - label: "Contenido"
-                name: cuerpo
-                widget: markdown
-                hint: "Usa ## para títulos de sección, - para listas, **texto** para negrita"
+          - { label: "Título de la página", name: titulo, widget: string }
+          - { label: "Fecha de vigencia (Ej: 17 de julio de 2026)", name: vigencia, widget: string }
+          - { label: "Contenido", name: cuerpo, widget: markdown, hint: "## para secciones · - para listas · **texto** para negrita" }
 
       - label: "Política de Privacidad"
         name: "privacidad"
-        file: "_data/politicas.json"
+        file: "_data/politica-privacidad.json"
         fields:
-          - label: "Política de Privacidad"
-            name: privacidad
-            widget: object
-            fields:
-              - { label: "Título de la página", name: titulo, widget: string }
-              - { label: "Fecha de vigencia", name: vigencia, widget: string }
-              - label: "Contenido"
-                name: cuerpo
-                widget: markdown
-                hint: "Usa ## para títulos de sección, - para listas, **texto** para negrita"
+          - { label: "Título de la página", name: titulo, widget: string }
+          - { label: "Fecha de vigencia", name: vigencia, widget: string }
+          - { label: "Contenido", name: cuerpo, widget: markdown, hint: "## para secciones · - para listas · **texto** para negrita" }
 
       - label: "Términos del Servicio"
         name: "terminos"
-        file: "_data/politicas.json"
+        file: "_data/politica-terminos.json"
         fields:
-          - label: "Términos del Servicio"
-            name: terminos
-            widget: object
-            fields:
-              - { label: "Título de la página", name: titulo, widget: string }
-              - { label: "Fecha de vigencia", name: vigencia, widget: string }
-              - label: "Contenido"
-                name: cuerpo
-                widget: markdown
-                hint: "Usa ## para títulos de sección, - para listas, **texto** para negrita"
+          - { label: "Título de la página", name: titulo, widget: string }
+          - { label: "Fecha de vigencia", name: vigencia, widget: string }
+          - { label: "Contenido", name: cuerpo, widget: markdown, hint: "## para secciones · - para listas · **texto** para negrita" }
 
       - label: "Política de Envío"
         name: "envios"
-        file: "_data/politicas.json"
+        file: "_data/politica-envios.json"
         fields:
-          - label: "Política de Envío"
-            name: envios
-            widget: object
-            fields:
-              - { label: "Título de la página", name: titulo, widget: string }
-              - { label: "Fecha de vigencia", name: vigencia, widget: string }
-              - label: "Contenido"
-                name: cuerpo
-                widget: markdown
-                hint: "Usa ## para títulos de sección, - para listas, **texto** para negrita"
+          - { label: "Título de la página", name: titulo, widget: string }
+          - { label: "Fecha de vigencia", name: vigencia, widget: string }
+          - { label: "Contenido", name: cuerpo, widget: markdown, hint: "## para secciones · - para listas · **texto** para negrita" }
 
   # ── CONFIGURACIÓN DEL NEGOCIO ──────────────────────────────────────────────
   - label: "Configuración del negocio"
@@ -207,11 +139,10 @@ collections:
           - label: "Avisos de la franja superior (rotación automática)"
             name: avisos
             widget: list
-            hint: "Puedes resaltar palabras clave con <em>texto</em>"
+            hint: "Puedes resaltar palabras con <em>texto</em>"
           - label: "Redes sociales"
             name: redes
             widget: object
-            collapsed: false
             fields:
               - { label: "TikTok (URL completa)", name: tiktok, widget: string, required: false }
               - { label: "Facebook (URL completa)", name: facebook, widget: string, required: false }
