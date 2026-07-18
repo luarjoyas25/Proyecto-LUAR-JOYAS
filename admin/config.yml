@@ -78,12 +78,117 @@ collections:
               - label: "Fotos (primera foto = foto principal)"
                 name: imagenes
                 widget: list
-                hint: "Escribe el nombre exacto del archivo. Ej: anillo-bianca.jpeg — la foto debe estar en la carpeta img/productos/"
+                hint: "Nombre exacto del archivo, sin ruta. Ej: anillo-bianca.jpeg — el archivo debe estar en img/productos/"
               - label: "Destacado en portada"
                 name: destacado
                 widget: boolean
                 default: false
-                hint: "Activa esta opción para que aparezca en la sección de destacados en la página de inicio"
+                hint: "Activa para que aparezca en la sección de destacados de la página de inicio"
+
+  # ── GALERÍA ───────────────────────────────────────────────────────────────
+  - label: "Galería"
+    name: "galeria"
+    files:
+      - label: "Fotos de la galería"
+        name: "galeria"
+        file: "_data/galeria.json"
+        fields:
+          - label: "Imágenes (en el orden en que aparecerán)"
+            name: imagenes
+            widget: list
+            hint: "Nombre exacto del archivo. Ej: galeria-taller.jpg — la foto debe estar en img/galeria/"
+
+  # ── PÁGINA NOSOTROS ────────────────────────────────────────────────────────
+  - label: "Página Nosotros"
+    name: "nosotros"
+    files:
+      - label: "Textos de la página Nosotros"
+        name: "nosotros"
+        file: "_data/nosotros.json"
+        fields:
+          - label: "Título principal"
+            name: titular
+            widget: string
+          - label: "Historia de la marca (separa párrafos con una línea en blanco)"
+            name: historia
+            widget: text
+            hint: "Cada párrafo separado por una línea en blanco"
+          - label: "Cita destacada (la que aparece en el bloque oscuro)"
+            name: cita
+            widget: text
+          - label: "Misión"
+            name: mision
+            widget: text
+          - label: "Visión"
+            name: vision
+            widget: text
+          - label: "El oficio"
+            name: oficio
+            widget: text
+
+  # ── POLÍTICAS LEGALES ──────────────────────────────────────────────────────
+  - label: "Políticas legales"
+    name: "politicas"
+    files:
+      - label: "Política de Reembolso"
+        name: "reembolso"
+        file: "_data/politicas.json"
+        fields:
+          - label: "Política de Reembolso"
+            name: reembolso
+            widget: object
+            fields:
+              - { label: "Título de la página", name: titulo, widget: string }
+              - { label: "Fecha de vigencia (Ej: 17 de julio de 2026)", name: vigencia, widget: string }
+              - label: "Contenido"
+                name: cuerpo
+                widget: markdown
+                hint: "Usa ## para títulos de sección, - para listas, **texto** para negrita"
+
+      - label: "Política de Privacidad"
+        name: "privacidad"
+        file: "_data/politicas.json"
+        fields:
+          - label: "Política de Privacidad"
+            name: privacidad
+            widget: object
+            fields:
+              - { label: "Título de la página", name: titulo, widget: string }
+              - { label: "Fecha de vigencia", name: vigencia, widget: string }
+              - label: "Contenido"
+                name: cuerpo
+                widget: markdown
+                hint: "Usa ## para títulos de sección, - para listas, **texto** para negrita"
+
+      - label: "Términos del Servicio"
+        name: "terminos"
+        file: "_data/politicas.json"
+        fields:
+          - label: "Términos del Servicio"
+            name: terminos
+            widget: object
+            fields:
+              - { label: "Título de la página", name: titulo, widget: string }
+              - { label: "Fecha de vigencia", name: vigencia, widget: string }
+              - label: "Contenido"
+                name: cuerpo
+                widget: markdown
+                hint: "Usa ## para títulos de sección, - para listas, **texto** para negrita"
+
+      - label: "Política de Envío"
+        name: "envios"
+        file: "_data/politicas.json"
+        fields:
+          - label: "Política de Envío"
+            name: envios
+            widget: object
+            fields:
+              - { label: "Título de la página", name: titulo, widget: string }
+              - { label: "Fecha de vigencia", name: vigencia, widget: string }
+              - label: "Contenido"
+                name: cuerpo
+                widget: markdown
+                hint: "Usa ## para títulos de sección, - para listas, **texto** para negrita"
 
   # ── CONFIGURACIÓN DEL NEGOCIO ──────────────────────────────────────────────
   - label: "Configuración del negocio"
@@ -93,25 +198,12 @@ collections:
         name: "config"
         file: "_data/config.json"
         fields:
-          - label: "WhatsApp (sin + ni espacios)"
-            name: whatsapp
-            widget: string
-            hint: "Ej: 573022894500 — incluye el código de país 57"
-          - label: "Correo electrónico"
-            name: correo
-            widget: string
-          - label: "Nombre de la línea Joyería"
-            name: nombreLineaAtelier
-            widget: string
-          - label: "Nombre de la línea Alta Joyería"
-            name: nombreLineaAlta
-            widget: string
-          - label: "Slogan de la marca"
-            name: slogan
-            widget: string
-          - label: "Texto del pie de página"
-            name: lemaPie
-            widget: text
+          - { label: "WhatsApp (sin + ni espacios)", name: whatsapp, widget: string, hint: "Ej: 573022894500" }
+          - { label: "Correo electrónico", name: correo, widget: string }
+          - { label: "Nombre de la línea Joyería", name: nombreLineaAtelier, widget: string }
+          - { label: "Nombre de la línea Alta Joyería", name: nombreLineaAlta, widget: string }
+          - { label: "Slogan de la marca", name: slogan, widget: string }
+          - { label: "Texto del pie de página", name: lemaPie, widget: text }
           - label: "Avisos de la franja superior (rotación automática)"
             name: avisos
             widget: list
@@ -121,18 +213,9 @@ collections:
             widget: object
             collapsed: false
             fields:
-              - label: "TikTok (URL completa)"
-                name: tiktok
-                widget: string
-                required: false
-              - label: "Facebook (URL completa)"
-                name: facebook
-                widget: string
-                required: false
-              - label: "Instagram (URL completa)"
-                name: instagram
-                widget: string
-                required: false
+              - { label: "TikTok (URL completa)", name: tiktok, widget: string, required: false }
+              - { label: "Facebook (URL completa)", name: facebook, widget: string, required: false }
+              - { label: "Instagram (URL completa)", name: instagram, widget: string, required: false }
           - label: "Guías de medidas (nombres de archivo en img/referencias/)"
             name: guiasMedidas
             widget: object
@@ -158,18 +241,11 @@ collections:
             widget: list
             summary: "{{fields.seccion}}"
             fields:
-              - label: "Nombre de la sección"
-                name: seccion
-                widget: string
+              - { label: "Nombre de la sección", name: seccion, widget: string }
               - label: "Preguntas"
                 name: items
                 widget: list
                 summary: "{{fields.pregunta}}"
                 fields:
-                  - label: "Pregunta"
-                    name: pregunta
-                    widget: string
-                  - label: "Respuesta"
-                    name: respuesta
-                    widget: text
-                    hint: "Usa saltos de línea normales para separar párrafos"
+                  - { label: "Pregunta", name: pregunta, widget: string }
+                  - { label: "Respuesta", name: respuesta, widget: text }

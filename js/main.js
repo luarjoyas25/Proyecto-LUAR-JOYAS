@@ -381,29 +381,39 @@ function iniciarFaq() {
   });
 }
 
-/* ---------- galería (fotos en img/galeria/galeria-01.jpg …) ---------- */
+/* ---------- galería ---------- */
 
 function iniciarGaleria() {
   var rejilla = document.getElementById("rejilla-galeria");
   if (!rejilla) return;
   var proporciones = ["3/4", "1/1", "4/5", "1/1", "3/4", "4/5", "1/1", "3/4", "4/5", "1/1", "3/4", "4/5"];
-  for (var i = 1; i <= 12; i++) {
-    (function (n) {
+
+  // Usa la lista del CMS si existe y no está vacía; si no, carga galeria-01…12.jpg
+  var archivos = (window.GALERIA && window.GALERIA.imagenes && window.GALERIA.imagenes.length)
+    ? window.GALERIA.imagenes
+    : (function () {
+        var lista = [];
+        for (var j = 1; j <= 12; j++) lista.push("galeria-" + (j < 10 ? "0" : "") + j + ".jpg");
+        return lista;
+      })();
+
+  archivos.forEach(function (archivo, idx) {
+    (function (archivo, idx) {
       var figura = document.createElement("figure");
-      var numero = (n < 10 ? "0" : "") + n;
+      var numero = (idx + 1 < 10 ? "0" : "") + (idx + 1);
       var img = document.createElement("img");
-      img.src = "img/galeria/galeria-" + numero + ".jpg";
+      img.src = "img/galeria/" + archivo;
       img.alt = "LUAR JOYAS — galería " + numero;
       img.addEventListener("error", function () {
         img.remove();
-        figura.style.aspectRatio = proporciones[n - 1];
+        figura.style.aspectRatio = proporciones[idx % 12];
         figura.style.position = "relative";
         figura.innerHTML = '<div class="galeria__pendiente"><b>L</b><span>Imagen ' + numero + '</span></div>';
       });
       figura.appendChild(img);
       rejilla.appendChild(figura);
-    })(i);
-  }
+    })(archivo, idx);
+  });
 }
 
 /* ---------- animación de aparición al hacer scroll ---------- */
@@ -581,21 +591,119 @@ function iniciarIntro() {
   setTimeout(cerrar, 3300);
 }
 
+/* ---------- renderizador de markdown simple ---------- */
+
+function mdToHtml(texto) {
+  if (!texto) return "";
+  var lineas = texto.replace(/\r\n/g, "\n").split("\n");
+  var html = "";
+  var enLista = false;
+  var parrafo = [];
+
+  var bold = function (s) {
+    return s.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  };
+  var cerrarParrafo = function () {
+    if (parrafo.length) {
+      html += "<p>" + bold(parrafo.join(" ")) + "</p>";
+      parrafo = [];
+    }
+  };
+  var cerrarLista = function () {
+    if (enLista) { html += "</ul>"; enLista = false; }
+  };
+
+  lineas.forEach(function (linea) {
+    if (linea.startsWith("## ")) {
+      cerrarParrafo(); cerrarLista();
+      html += "<h2>" + bold(linea.slice(3)) + "</h2>";
+    } else if (linea.startsWith("- ")) {
+      cerrarParrafo();
+      if (!enLista) { html += "<ul>"; enLista = true; }
+      html += "<li>" + bold(linea.slice(2)) + "</li>";
+    } else if (linea.trim() === "") {
+      cerrarLista(); cerrarParrafo();
+    } else {
+      if (enLista) cerrarLista();
+      parrafo.push(linea);
+    }
+  });
+  cerrarLista(); cerrarParrafo();
+  return html;
+}
+
+/* ---------- página nosotros ---------- */
+
+function iniciarNosotros() {
+  if (!window.NOSOTROS) return;
+  var d = window.NOSOTROS;
+  var el = function (id) { return document.getElementById(id); };
+
+  if (d.titular && el("nos-titular"))
+    el("nos-titular").textContent = d.titular;
+
+  if (d.historia && el("nos-historia"))
+    el("nos-historia").innerHTML = d.historia.split("\n\n").map(function (p) {
+      return "<p>" + p.replace(/\n/g, "<br>") + "</p>";
+    }).join("");
+
+  if (d.cita && el("nos-cita"))
+    el("nos-cita").innerHTML = d.cita.replace(/\n/g, "<br>");
+
+  if (d.mision && el("nos-mision"))   el("nos-mision").textContent   = d.mision;
+  if (d.vision && el("nos-vision"))   el("nos-vision").textContent   = d.vision;
+  if (d.oficio && el("nos-oficio"))   el("nos-oficio").textContent   = d.oficio;
+}
+
+/* ---------- páginas de políticas ---------- */
+
+function iniciarPolitica() {
+  var cuerpoEl = document.querySelector(".politica__cuerpo[data-politica]");
+  if (!cuerpoEl || !window.POLITICAS) return;
+  var clave = cuerpoEl.getAttribute("data-politica");
+  var datos = window.POLITICAS[clave];
+  if (!datos) return;
+
+  cuerpoEl.innerHTML = mdToHtml(datos.cuerpo || "");
+
+  var tituloEl = document.querySelector(".politica .titulo");
+  if (tituloEl && datos.titulo) tituloEl.textContent = datos.titulo;
+
+  var fechaEl = document.querySelector(".politica__fecha");
+  if (fechaEl && datos.vigencia) fechaEl.textContent = "Vigente desde el " + datos.vigencia;
+}
+
 /* ---------- arranque ---------- */
 
 document.addEventListener("DOMContentLoaded", function () {
   iniciarIntro(); // no necesita datos del catálogo
 
-  Promise.all([
+  Promise.allSettled([
     fetch("_data/config.json").then(function (r) { return r.json(); }),
     fetch("_data/productos.json").then(function (r) { return r.json(); }),
     fetch("_data/guia.json").then(function (r) { return r.json(); }),
-    fetch("_data/categorias.json").then(function (r) { return r.json(); })
-  ]).then(function (datos) {
-    window.CONFIG     = datos[0];
-    window.PRODUCTOS  = datos[1].productos;
-    window.GUIA       = datos[2].secciones;
-    window.CATEGORIAS = datos[3];
+    fetch("_data/categorias.json").then(function (r) { return r.json(); }),
+    fetch("_data/galeria.json").then(function (r) { return r.json(); }),
+    fetch("_data/nosotros.json").then(function (r) { return r.json(); }),
+    fetch("_data/politicas.json").then(function (r) { return r.json(); })
+  ]).then(function (res) {
+    var ok = function (r) { return r.status === "fulfilled" ? r.value : null; };
+
+    var config    = ok(res[0]);
+    var productos = ok(res[1]);
+    var guia      = ok(res[2]);
+    var cats      = ok(res[3]);
+    var galeria   = ok(res[4]);
+    var nosotros  = ok(res[5]);
+    var politicas = ok(res[6]);
+
+    if (config)    window.CONFIG     = config;
+    if (productos) window.PRODUCTOS  = productos.productos;
+    if (guia)      window.GUIA       = guia.secciones;
+    if (cats)      window.CATEGORIAS = cats;
+    if (galeria)   window.GALERIA    = galeria;
+    if (nosotros)  window.NOSOTROS   = nosotros;
+    if (politicas) window.POLITICAS  = politicas;
 
     iniciarBase();
     iniciarCategoriasInicio();
@@ -604,8 +712,8 @@ document.addEventListener("DOMContentLoaded", function () {
     iniciarDetalle();
     iniciarFaq();
     iniciarGaleria();
+    iniciarNosotros();
+    iniciarPolitica();
     observarReveles();
-  }).catch(function (err) {
-    console.error("LUAR JOYAS — error cargando datos:", err);
   });
 });

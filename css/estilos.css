@@ -1268,6 +1268,8 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 .pie__dev { font-size: 11px; letter-spacing: .1em; color: rgba(251,250,246,.3); }
 .pie__dev a { color: rgba(203,178,115,.38); transition: color var(--transicion); }
 .pie__dev a:hover { color: var(--oro-claro); }
+.pie__admin { opacity: .22; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; transition: opacity var(--transicion); }
+.pie__admin:hover { opacity: 1; }
 
 /* ============================================================
    FILTRO DE METAL (catálogo Plata / Oro)

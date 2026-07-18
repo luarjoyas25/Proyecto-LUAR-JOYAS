@@ -5,8 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LUAR JOYAS — Panel de administración</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    #barra-admin {
+      display: none; position: fixed; top: 0; right: 0; z-index: 9999;
+      background: #1a1916; border-bottom-left-radius: 8px;
+      padding: 8px 16px; font-family: sans-serif; font-size: 12px;
+      color: #cbb273; gap: 14px; align-items: center;
+      box-shadow: -2px 2px 12px rgba(0,0,0,.4);
+    }
+    #barra-admin .usuario { color: rgba(203,178,115,.55); font-size: 11px; }
+    #barra-admin button {
+      background: none; border: 1px solid rgba(203,178,115,.35);
+      color: #cbb273; font-size: 11px; padding: 4px 10px; cursor: pointer;
+      letter-spacing: .05em; transition: border-color .2s, color .2s;
+    }
+    #barra-admin button:hover { border-color: #cbb273; color: #e5d49a; }
+    #barra-admin button.danger { border-color: rgba(200,80,80,.4); color: rgba(220,120,120,.8); }
+    #barra-admin button.danger:hover { border-color: #c85050; color: #e08080; }
+  </style>
 </head>
 <body>
+
+  <!-- Barra de usuario (aparece solo cuando hay sesión activa) -->
+  <div id="barra-admin">
+    <span class="usuario" id="admin-email"></span>
+    <button id="btn-cambiar-pass" title="Envía un enlace de cambio de contraseña a tu correo">Cambiar contraseña</button>
+    <button id="btn-cerrar-sesion" class="danger">Cerrar sesión</button>
+  </div>
+
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <script>
+    if (window.netlifyIdentity) {
+
+      window.netlifyIdentity.on("init", function (user) {
+        if (user) {
+          var barra = document.getElementById("barra-admin");
+          document.getElementById("admin-email").textContent = user.email;
+          barra.style.display = "flex";
+        }
+      });
+
+      document.getElementById("btn-cerrar-sesion").addEventListener("click", function () {
+        window.netlifyIdentity.logout();
+      });
+
+      window.netlifyIdentity.on("logout", function () {
+        window.location.href = "/admin/";
+      });
+
+      document.getElementById("btn-cambiar-pass").addEventListener("click", function () {
+        var user = window.netlifyIdentity.currentUser();
+        if (!user) return;
+        fetch("/.netlify/identity/recover", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: user.email })
+        })
+          .then(function () {
+            alert("✓ Se envió un enlace de cambio de contraseña a " + user.email + ".\n\nRevisa tu bandeja de entrada (y la carpeta de spam).");
+          })
+          .catch(function () {
+            alert("Hubo un problema al enviar el correo.\n\nAlternativa: cierra sesión y usa la opción "¿Olvidaste tu contraseña?" en la pantalla de inicio de sesión.");
+          });
+      });
+    }
+  </script>
+
 </body>
 </html>
