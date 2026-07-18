@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lighthearted-haupia-f6b530.netlify.app/sitemap.xml
