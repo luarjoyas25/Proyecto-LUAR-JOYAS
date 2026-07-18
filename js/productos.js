@@ -44,6 +44,11 @@
    - descripcion: opcional. Texto libre sobre la pieza.
    - imagenes:    lista de nombres de archivo dentro de img/productos/
    - destacado:   true = aparece en la página de inicio (máximo 4)
+   - metal:       "plata" (valor por defecto si no se escribe) | "oro"
+                  Controla el filtro de metal en el catálogo.
+                  Los productos actuales NO necesitan este campo: la web
+                  los trata como plata automáticamente.
+                  Para un producto de oro, agrega:  metal: "oro",
    ============================================================ */
 
 const CONFIG = {

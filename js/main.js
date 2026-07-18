@@ -249,6 +249,7 @@ function iniciarCatalogo() {
 
   var filtroCategoria = "todas";
   var filtroGenero = "todas";
+  var filtroMetal = "todos";
 
   // Si la URL trae #anillos (o ?categoria=anillos), arranca filtrado
   var inicial = location.hash.replace("#", "") ||
@@ -287,12 +288,24 @@ function iniciarCatalogo() {
     });
   });
 
+  // botones de metal (plata / oro). Si un producto no tiene el campo
+  // "metal", se asume "plata" (todos los productos actuales son plata).
+  document.querySelectorAll("#filtros-metal button").forEach(function (boton) {
+    boton.addEventListener("click", function () {
+      filtroMetal = boton.dataset.metal;
+      document.querySelectorAll("#filtros-metal button").forEach(function (b) { b.classList.remove("activo"); });
+      boton.classList.add("activo");
+      pintar();
+    });
+  });
+
   function pintar() {
     rejilla.innerHTML = "";
     var visibles = PRODUCTOS.filter(function (p) {
       var okCategoria = filtroCategoria === "todas" || p.categoria === filtroCategoria;
       var okGenero = filtroGenero === "todas" || p.genero === filtroGenero || p.genero === "unisex";
-      return okCategoria && okGenero;
+      var okMetal = filtroMetal === "todos" || (p.metal || "plata") === filtroMetal;
+      return okCategoria && okGenero && okMetal;
     });
     if (!visibles.length) {
       rejilla.innerHTML = '<p class="sin-resultados">No hay piezas en esta selección por el momento.</p>';

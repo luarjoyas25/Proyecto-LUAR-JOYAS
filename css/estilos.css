@@ -1260,3 +1260,67 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
   letter-spacing: .12em;
   color: rgba(251,250,246,.58);
 }
+
+.pie__legal { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.pie__legal a { font-size: 11px; letter-spacing: .12em; color: rgba(251,250,246,.5); transition: color var(--transicion); }
+.pie__legal a:hover { color: var(--oro-claro); }
+
+.pie__dev { font-size: 11px; letter-spacing: .1em; color: rgba(251,250,246,.3); }
+.pie__dev a { color: rgba(203,178,115,.38); transition: color var(--transicion); }
+.pie__dev a:hover { color: var(--oro-claro); }
+
+/* ============================================================
+   FILTRO DE METAL (catálogo Plata / Oro)
+   ============================================================ */
+
+.filtros-metal { display: flex; justify-content: center; gap: 22px; margin-bottom: 34px; }
+.filtros-metal button {
+  background: none;
+  border: 1px solid var(--linea);
+  padding: 10px 24px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gris);
+  transition: var(--transicion);
+}
+.filtros-metal button.activo,
+.filtros-metal button:hover { background: var(--tinta); color: var(--marfil); border-color: var(--tinta); }
+
+/* ============================================================
+   PÁGINAS LEGALES (reembolso, privacidad, términos, envíos)
+   ============================================================ */
+
+.politica { max-width: 780px; }
+.politica__fecha {
+  font-size: 12px;
+  letter-spacing: .2em;
+  color: var(--gris);
+  text-transform: uppercase;
+  margin: 8px 0 56px;
+}
+.politica__cuerpo h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(19px, 2.2vw, 24px);
+  margin: 44px 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--linea);
+}
+.politica__cuerpo p {
+  color: var(--tinta-suave);
+  font-size: 15.5px;
+  line-height: 1.85;
+  margin: 0 0 12px;
+}
+.politica__cuerpo ul {
+  list-style: disc;
+  padding-left: 22px;
+  color: var(--tinta-suave);
+  font-size: 15.5px;
+  line-height: 1.85;
+  margin: 0 0 14px;
+}
+.politica__cuerpo li { margin-bottom: 6px; }
+.politica__cuerpo strong { font-weight: 500; color: var(--tinta); }
