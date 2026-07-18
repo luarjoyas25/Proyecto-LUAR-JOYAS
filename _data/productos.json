@@ -7,7 +7,7 @@
       "precio": 0,
       "material": "",
       "metal": "plata",
-      "destacado": false,
+      "destacado": true,
       "nombre": "Anillo Bianca Esmeralda y Circones",
       "descripcion": "",
       "genero": "mujer",
@@ -599,21 +599,6 @@
       "referencia": "",
       "categoria": "topos",
       "id": 40
-    },
-    {
-      "imagenes": [
-        "img/productos/photo.jpg"
-      ],
-      "precio": 5454541214654,
-      "material": "´jklsjfkhnjkfh",
-      "metal": "oro",
-      "destacado": true,
-      "nombre": "jolsadjfoejfoij",
-      "descripcion": "fgfdgfdg",
-      "genero": "hombre",
-      "referencia": "gdfgfdg",
-      "categoria": "cadenas",
-      "id": 4164644
     }
   ]
 }
