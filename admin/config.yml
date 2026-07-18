@@ -55,7 +55,13 @@ collections:
               - label: "Fotos (primera foto = foto principal)"
                 name: imagenes
                 widget: list
-                hint: "Nombre exacto del archivo. Ej: anillo-bianca.jpeg — el archivo debe estar en img/productos/"
+                hint: "Sube aquí las fotos del producto. La primera foto es la principal."
+                field:
+                  label: Foto
+                  name: foto
+                  widget: image
+                  media_folder: "/img/productos"
+                  public_folder: "img/productos"
               - { label: "Destacado en portada", name: destacado, widget: boolean, default: false }
 
   # ── GALERÍA ───────────────────────────────────────────────────────────────

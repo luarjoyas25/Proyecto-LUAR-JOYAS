@@ -35,6 +35,12 @@ function nombreCategoria(clave) {
   return c ? c.nombre : "";
 }
 
+// Normaliza una ruta de imagen de producto: acepta "foto.jpg" o "img/productos/foto.jpg"
+function rutaProducto(src) {
+  if (!src) return "";
+  return src.startsWith("img/") ? src : "img/productos/" + src;
+}
+
 // Primera imagen de un producto (la principal), o null si no tiene
 function imagenPrincipal(producto) {
   return (producto.imagenes && producto.imagenes.length) ? producto.imagenes[0] : null;
@@ -64,7 +70,7 @@ function tarjetaProducto(p) {
   articulo.innerHTML =
     '<a class="producto__enlace" href="producto.html#' + p.id + '">' +
       '<div class="producto__marco">' +
-        (imagen ? '<img src="img/productos/' + imagen + '" alt="' + p.nombre + ' — LUAR JOYAS">' : "") +
+        (imagen ? '<img src="' + rutaProducto(imagen) + '" alt="' + p.nombre + ' — LUAR JOYAS">' : "") +
       "</div>" +
       '<div class="producto__linea">' + nombreCategoria(p.categoria) + "</div>" +
       '<h3 class="producto__nombre">' + p.nombre + "</h3>" +
@@ -145,8 +151,8 @@ function pintarDetalle() {
     thumbsHTML = '<div class="detalle__thumbs">' +
       imgs.map(function (src, i) {
         return '<button class="detalle__thumb' + (i === 0 ? " activo" : "") + '" ' +
-               'data-src="img/productos/' + src + '" aria-label="Ver foto ' + (i + 1) + '">' +
-               '<img src="img/productos/' + src + '" alt="' + producto.nombre + " " + (i + 1) + '">' +
+               'data-src="' + rutaProducto(src) + '" aria-label="Ver foto ' + (i + 1) + '">' +
+               '<img src="' + rutaProducto(src) + '" alt="' + producto.nombre + " " + (i + 1) + '">' +
                "</button>";
       }).join("") +
       "</div>";
