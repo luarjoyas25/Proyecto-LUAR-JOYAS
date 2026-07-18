@@ -60,6 +60,7 @@ collections:
                   label: Foto
                   name: foto
                   widget: image
+                  required: false
                   media_folder: "/img/productos"
                   public_folder: "img/productos"
               - { label: "Destacado en portada", name: destacado, widget: boolean, default: false }
@@ -80,6 +81,7 @@ collections:
               label: Foto
               name: foto
               widget: image
+              required: false
               media_folder: "/img/galeria"
               public_folder: "img/galeria"
 
@@ -168,8 +170,8 @@ collections:
                 name: cadenas
                 widget: object
                 fields:
-                  - { label: "Imagen para hombre", name: hombre, widget: image, media_folder: "/img/referencias", public_folder: "img/referencias", required: false }
-                  - { label: "Imagen para mujer",  name: mujer,  widget: image, media_folder: "/img/referencias", public_folder: "img/referencias", required: false }
+                  - { label: "Imagen para hombre", name: hombre, widget: image, required: false, media_folder: "/img/referencias", public_folder: "img/referencias" }
+                  - { label: "Imagen para mujer",  name: mujer,  widget: image, required: false, media_folder: "/img/referencias", public_folder: "img/referencias" }
 
   # ── GUÍA LUAR JOYAS (FAQ) ──────────────────────────────────────────────────
   - label: "Guía Luar Joyas (preguntas frecuentes)"
