@@ -1,44 +1,616 @@
 {
   "productos": [
-    { "id": 1,  "nombre": "Anillo Bianca Esmeralda y Circones",   "categoria": "anillos",   "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["anillo-bianca-esmeralda-circones.jpeg"],     "destacado": true  },
-    { "id": 2,  "nombre": "Anillo de Compromiso 6mm",             "categoria": "anillos",   "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["anillo-compromiso-6mm.jpeg"],                 "destacado": false },
-    { "id": 3,  "nombre": "Anillo Elisa Esmeralda y Circones",    "categoria": "anillos",   "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["anillo-elisa-esmeralda-circones.jpeg"],      "destacado": false },
-    { "id": 4,  "nombre": "Anillo Medio Sin Fin",                 "categoria": "anillos",   "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["anillo-medio-sin-fin.jpeg"],                  "destacado": false },
-    { "id": 5,  "nombre": "Anillo Mia Esmeralda y Circones",      "categoria": "anillos",   "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["anillo-mia-esmeralda-circones.jpeg"],        "destacado": false },
-    { "id": 6,  "nombre": "Cadena Barbara Balines",               "categoria": "cadenas",   "genero": "hombre",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["cadena-barbara-balines.jpeg"],               "destacado": false },
-    { "id": 7,  "nombre": "Cadena Militar",                       "categoria": "cadenas",   "genero": "hombre",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["cadena-militar.jpeg"],                       "destacado": true  },
-    { "id": 8,  "nombre": "Cadena Mini Cubana",                   "categoria": "cadenas",   "genero": "hombre",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["cadena-mini-cubana-hombre.avif"],            "destacado": false },
-    { "id": 9,  "nombre": "Cadena Rolón",                         "categoria": "cadenas",   "genero": "hombre",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["cadena-rolon.jpeg"],                         "destacado": false },
-    { "id": 10, "nombre": "Rosario",                              "categoria": "cadenas",   "genero": "hombre",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["rosario.png"],                               "destacado": false },
-    { "id": 11, "nombre": "Cadena Cola de Ratón",                 "categoria": "cadenas",   "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["cadena-cola-raton.jpeg"],                    "destacado": false },
-    { "id": 12, "nombre": "Cadena Corazones",                     "categoria": "cadenas",   "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["cadena-corazones.jpeg"],                     "destacado": false },
-    { "id": 13, "nombre": "Cadena Mini Hermes",                   "categoria": "cadenas",   "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["cadena-mini-hermes.jpeg"],                   "destacado": false },
-    { "id": 14, "nombre": "Cadena Minicubana",                    "categoria": "cadenas",   "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["cadena-minicubana-mujer.jpeg"],              "destacado": false },
-    { "id": 15, "nombre": "Cadena Singapur",                      "categoria": "cadenas",   "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["cadena-singapur.jpeg"],                      "destacado": false },
-    { "id": 16, "nombre": "Candonga I",                           "categoria": "candongas", "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["candonga-01.avif"],                          "destacado": false },
-    { "id": 17, "nombre": "Candonga Melcocha",                    "categoria": "candongas", "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["candonga-melcocha.avif"],                    "destacado": true  },
-    { "id": 18, "nombre": "Candonga II",                          "categoria": "candongas", "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["candonga-02.avif"],                          "destacado": false },
-    { "id": 19, "nombre": "Candonga III",                         "categoria": "candongas", "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["candonga-03.avif"],                          "destacado": false },
-    { "id": 20, "nombre": "Candongas Balines",                    "categoria": "candongas", "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["candongas-balines.avif"],                    "destacado": false },
-    { "id": 21, "nombre": "Dije Avión",                           "categoria": "dijes",     "genero": "unisex",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["dije-avion.avif"],                           "destacado": false },
-    { "id": 22, "nombre": "Dije Corazón",                         "categoria": "dijes",     "genero": "unisex",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["dije-corazon.avif"],                         "destacado": true  },
-    { "id": 23, "nombre": "Dije Cruz con Circones Blancos",       "categoria": "dijes",     "genero": "unisex",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["dije-cruz-circones-blancos.avif"],           "destacado": false },
-    { "id": 24, "nombre": "Dije Cruz",                            "categoria": "dijes",     "genero": "unisex",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["dije-cruz.avif"],                            "destacado": false },
-    { "id": 25, "nombre": "Dije Hoja de Árbol",                   "categoria": "dijes",     "genero": "unisex",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["dije-hoja-de-arbol.avif"],                   "destacado": false },
-    { "id": 26, "nombre": "Pulsera Bismark",                      "categoria": "pulsos",    "genero": "hombre",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["pulsera-bismark.avif"],                      "destacado": false },
-    { "id": 27, "nombre": "Pulsera Cubana Ancha",                 "categoria": "pulsos",    "genero": "hombre",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["pulsera-cubana-ancha.avif"],                 "destacado": false },
-    { "id": 28, "nombre": "Pulsera Doble Eslabón",                "categoria": "pulsos",    "genero": "hombre",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["pulsera-doble-eslabon.avif"],                "destacado": false },
-    { "id": 29, "nombre": "Pulsera Franco",                       "categoria": "pulsos",    "genero": "hombre",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["pulsera-franco.avif"],                       "destacado": false },
-    { "id": 30, "nombre": "Pulsera Gucci",                        "categoria": "pulsos",    "genero": "hombre",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["pulsera-gucci.avif"],                        "destacado": false },
-    { "id": 31, "nombre": "Pulsera Amor Eterno",                  "categoria": "pulsos",    "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["pulsera-amor-eterno.jpg"],                   "destacado": false },
-    { "id": 32, "nombre": "Pulsera Cartier",                      "categoria": "pulsos",    "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["pulsera-cartier.webp"],                      "destacado": false },
-    { "id": 33, "nombre": "Pulsera con Dijes Rojos",              "categoria": "pulsos",    "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["pulsera-con-dijes-rojos.avif"],              "destacado": false },
-    { "id": 34, "nombre": "Pulsera Corazones",                    "categoria": "pulsos",    "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["pulsera-corazones.jpg"],                     "destacado": false },
-    { "id": 35, "nombre": "Pulsera Bolita Punto 1mm",             "categoria": "pulsos",    "genero": "mujer",   "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["pulsera-bolita-punto-1mm.webp"],             "destacado": false },
-    { "id": 36, "nombre": "Topo Balín Diamantado",                "categoria": "topos",     "genero": "unisex",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["topo-balin-diamantado.jpg"],                 "destacado": false },
-    { "id": 37, "nombre": "Topo Rolex",                           "categoria": "topos",     "genero": "unisex",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["topo-rolex.jpg"],                            "destacado": false },
-    { "id": 38, "nombre": "Topos de Tortuga",                     "categoria": "topos",     "genero": "unisex",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["topos-de-tortuga.avif"],                     "destacado": false },
-    { "id": 39, "nombre": "Topos Virgen de Guadalupe",            "categoria": "topos",     "genero": "unisex",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["topos-virgen-guadalupe.avif"],               "destacado": false },
-    { "id": 40, "nombre": "Topo Corazón con Piedra Circón",       "categoria": "topos",     "genero": "unisex",  "metal": "plata", "precio": 0, "material": "", "referencia": "", "descripcion": "", "imagenes": ["topo-corazon-piedra-circon.avif"],           "destacado": true  }
+    {
+      "imagenes": [
+        "anillo-bianca-esmeralda-circones.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": true,
+      "nombre": "Anillo Bianca Esmeralda y Circones",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "anillos",
+      "id": 1
+    },
+    {
+      "imagenes": [
+        "anillo-compromiso-6mm.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Anillo de Compromiso 6mm",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "anillos",
+      "id": 2
+    },
+    {
+      "imagenes": [
+        "anillo-elisa-esmeralda-circones.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Anillo Elisa Esmeralda y Circones",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "anillos",
+      "id": 3
+    },
+    {
+      "imagenes": [
+        "anillo-medio-sin-fin.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Anillo Medio Sin Fin",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "anillos",
+      "id": 4
+    },
+    {
+      "imagenes": [
+        "anillo-mia-esmeralda-circones.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Anillo Mia Esmeralda y Circones",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "anillos",
+      "id": 5
+    },
+    {
+      "imagenes": [
+        "cadena-barbara-balines.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Cadena Barbara Balines",
+      "descripcion": "",
+      "genero": "hombre",
+      "referencia": "",
+      "categoria": "cadenas",
+      "id": 6
+    },
+    {
+      "imagenes": [
+        "cadena-militar.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": true,
+      "nombre": "Cadena Militar",
+      "descripcion": "",
+      "genero": "hombre",
+      "referencia": "",
+      "categoria": "cadenas",
+      "id": 7
+    },
+    {
+      "imagenes": [
+        "cadena-mini-cubana-hombre.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Cadena Mini Cubana",
+      "descripcion": "",
+      "genero": "hombre",
+      "referencia": "",
+      "categoria": "cadenas",
+      "id": 8
+    },
+    {
+      "imagenes": [
+        "cadena-rolon.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Cadena Rolón",
+      "descripcion": "",
+      "genero": "hombre",
+      "referencia": "",
+      "categoria": "cadenas",
+      "id": 9
+    },
+    {
+      "imagenes": [
+        "rosario.png"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Rosario",
+      "descripcion": "",
+      "genero": "hombre",
+      "referencia": "",
+      "categoria": "cadenas",
+      "id": 10
+    },
+    {
+      "imagenes": [
+        "cadena-cola-raton.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Cadena Cola de Ratón",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "cadenas",
+      "id": 11
+    },
+    {
+      "imagenes": [
+        "cadena-corazones.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Cadena Corazones",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "cadenas",
+      "id": 12
+    },
+    {
+      "imagenes": [
+        "cadena-mini-hermes.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Cadena Mini Hermes",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "cadenas",
+      "id": 13
+    },
+    {
+      "imagenes": [
+        "cadena-minicubana-mujer.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Cadena Minicubana",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "cadenas",
+      "id": 14
+    },
+    {
+      "imagenes": [
+        "cadena-singapur.jpeg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Cadena Singapur",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "cadenas",
+      "id": 15
+    },
+    {
+      "imagenes": [
+        "candonga-01.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Candonga I",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "candongas",
+      "id": 16
+    },
+    {
+      "imagenes": [
+        "candonga-melcocha.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": true,
+      "nombre": "Candonga Melcocha",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "candongas",
+      "id": 17
+    },
+    {
+      "imagenes": [
+        "candonga-02.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Candonga II",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "candongas",
+      "id": 18
+    },
+    {
+      "imagenes": [
+        "candonga-03.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Candonga III",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "candongas",
+      "id": 19
+    },
+    {
+      "imagenes": [
+        "candongas-balines.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Candongas Balines",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "candongas",
+      "id": 20
+    },
+    {
+      "imagenes": [
+        "dije-avion.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Dije Avión",
+      "descripcion": "",
+      "genero": "unisex",
+      "referencia": "",
+      "categoria": "dijes",
+      "id": 21
+    },
+    {
+      "imagenes": [
+        "dije-corazon.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": true,
+      "nombre": "Dije Corazón",
+      "descripcion": "",
+      "genero": "unisex",
+      "referencia": "",
+      "categoria": "dijes",
+      "id": 22
+    },
+    {
+      "imagenes": [
+        "dije-cruz-circones-blancos.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Dije Cruz con Circones Blancos",
+      "descripcion": "",
+      "genero": "unisex",
+      "referencia": "",
+      "categoria": "dijes",
+      "id": 23
+    },
+    {
+      "imagenes": [
+        "dije-cruz.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Dije Cruz",
+      "descripcion": "",
+      "genero": "unisex",
+      "referencia": "",
+      "categoria": "dijes",
+      "id": 24
+    },
+    {
+      "imagenes": [
+        "dije-hoja-de-arbol.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Dije Hoja de Árbol",
+      "descripcion": "",
+      "genero": "unisex",
+      "referencia": "",
+      "categoria": "dijes",
+      "id": 25
+    },
+    {
+      "imagenes": [
+        "pulsera-bismark.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Pulsera Bismark",
+      "descripcion": "",
+      "genero": "hombre",
+      "referencia": "",
+      "categoria": "pulsos",
+      "id": 26
+    },
+    {
+      "imagenes": [
+        "pulsera-cubana-ancha.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Pulsera Cubana Ancha",
+      "descripcion": "",
+      "genero": "hombre",
+      "referencia": "",
+      "categoria": "pulsos",
+      "id": 27
+    },
+    {
+      "imagenes": [
+        "pulsera-doble-eslabon.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Pulsera Doble Eslabón",
+      "descripcion": "",
+      "genero": "hombre",
+      "referencia": "",
+      "categoria": "pulsos",
+      "id": 28
+    },
+    {
+      "imagenes": [
+        "pulsera-franco.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Pulsera Franco",
+      "descripcion": "",
+      "genero": "hombre",
+      "referencia": "",
+      "categoria": "pulsos",
+      "id": 29
+    },
+    {
+      "imagenes": [
+        "pulsera-gucci.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Pulsera Gucci",
+      "descripcion": "",
+      "genero": "hombre",
+      "referencia": "",
+      "categoria": "pulsos",
+      "id": 30
+    },
+    {
+      "imagenes": [
+        "pulsera-amor-eterno.jpg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Pulsera Amor Eterno",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "pulsos",
+      "id": 31
+    },
+    {
+      "imagenes": [
+        "pulsera-cartier.webp"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Pulsera Cartier",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "pulsos",
+      "id": 32
+    },
+    {
+      "imagenes": [
+        "pulsera-con-dijes-rojos.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Pulsera con Dijes Rojos",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "pulsos",
+      "id": 33
+    },
+    {
+      "imagenes": [
+        "pulsera-corazones.jpg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Pulsera Corazones",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "pulsos",
+      "id": 34
+    },
+    {
+      "imagenes": [
+        "pulsera-bolita-punto-1mm.webp"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Pulsera Bolita Punto 1mm",
+      "descripcion": "",
+      "genero": "mujer",
+      "referencia": "",
+      "categoria": "pulsos",
+      "id": 35
+    },
+    {
+      "imagenes": [
+        "topo-balin-diamantado.jpg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Topo Balín Diamantado",
+      "descripcion": "",
+      "genero": "unisex",
+      "referencia": "",
+      "categoria": "topos",
+      "id": 36
+    },
+    {
+      "imagenes": [
+        "topo-rolex.jpg"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Topo Rolex",
+      "descripcion": "",
+      "genero": "unisex",
+      "referencia": "",
+      "categoria": "topos",
+      "id": 37
+    },
+    {
+      "imagenes": [
+        "topos-de-tortuga.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Topos de Tortuga",
+      "descripcion": "",
+      "genero": "unisex",
+      "referencia": "",
+      "categoria": "topos",
+      "id": 38
+    },
+    {
+      "imagenes": [
+        "topos-virgen-guadalupe.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": false,
+      "nombre": "Topos Virgen de Guadalupe",
+      "descripcion": "",
+      "genero": "unisex",
+      "referencia": "",
+      "categoria": "topos",
+      "id": 39
+    },
+    {
+      "imagenes": [
+        "topo-corazon-piedra-circon.avif"
+      ],
+      "precio": 0,
+      "material": "",
+      "metal": "plata",
+      "destacado": true,
+      "nombre": "Topo Corazón con Piedra Circón",
+      "descripcion": "",
+      "genero": "unisex",
+      "referencia": "",
+      "categoria": "topos",
+      "id": 40
+    },
+    {
+      "precio": 15522541,
+      "material": "barro",
+      "metal": "oro",
+      "destacado": false,
+      "nombre": "çkjkggjklgjgkj",
+      "descripcion": "fsfsdfdfsdf",
+      "genero": "hombre",
+      "referencia": "ffdff",
+      "categoria": "topos",
+      "id": 654456
+    }
   ]
 }
