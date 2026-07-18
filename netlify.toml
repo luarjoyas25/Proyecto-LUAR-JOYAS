@@ -1,17 +1,17 @@
+# ── Sitio principal ───────────────────────────────────────────────────────────
 [[headers]]
   for = "/*"
   [headers.values]
-    # Evita que la web se incruste en iframes de otros sitios (clickjacking)
     X-Frame-Options = "DENY"
-
-    # Impide que el navegador "adivine" el tipo de archivo (MIME sniffing)
     X-Content-Type-Options = "nosniff"
-
-    # Controla qué información de origen se envía al hacer clic en enlaces externos
     Referrer-Policy = "strict-origin-when-cross-origin"
-
-    # Desactiva funciones del navegador que este sitio no usa
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://wa.me; frame-ancestors 'none';"
 
-    # Política de seguridad de contenido: solo carga recursos de fuentes conocidas
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://wa.me; frame-ancestors 'none';"
+# ── Panel de administración (Decap CMS + Netlify Identity) ────────────────────
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://identity.netlify.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.github.com https://*.netlify.com https://*.netlify.app https://identity.netlify.com; frame-src 'self' https://identity.netlify.com; frame-ancestors 'none';"

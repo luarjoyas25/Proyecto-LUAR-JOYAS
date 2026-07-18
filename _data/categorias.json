@@ -1,0 +1,8 @@
+[
+  { "clave": "cadenas",   "nombre": "Cadenas" },
+  { "clave": "anillos",   "nombre": "Anillos" },
+  { "clave": "candongas", "nombre": "Candongas" },
+  { "clave": "topos",     "nombre": "Topos" },
+  { "clave": "dijes",     "nombre": "Dijes" },
+  { "clave": "pulsos",    "nombre": "Pulsos" }
+]

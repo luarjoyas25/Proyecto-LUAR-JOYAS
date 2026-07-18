@@ -1,0 +1,24 @@
+{
+  "whatsapp": "573022894500",
+  "correo": "luarjoyas25@gmail.com",
+  "nombreLineaAtelier": "Joyería",
+  "nombreLineaAlta": "Alta Joyería",
+  "avisos": [
+    "Envíos a toda Colombia",
+    "Consulta personalizada por WhatsApp",
+    "Alta joyería hecha a mano"
+  ],
+  "slogan": "El legado que llevarás contigo",
+  "lemaPie": "Joyas que transforman momentos en recuerdos eternos. Fabricación y comercialización, para toda Colombia.",
+  "redes": {
+    "tiktok": "https://www.tiktok.com/@luarjoyas",
+    "facebook": "https://www.facebook.com/profile.php?id=61591530045826",
+    "instagram": "https://www.instagram.com/luarjoyas25/"
+  },
+  "guiasMedidas": {
+    "cadenas": {
+      "hombre": "medidas-cadena-hombre.avif",
+      "mujer": "medidas-cadena-mujer.jpg"
+    }
+  }
+}

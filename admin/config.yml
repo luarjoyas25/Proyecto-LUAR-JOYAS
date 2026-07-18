@@ -1,0 +1,175 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img/productos"
+public_folder: "img/productos"
+
+locale: es
+
+collections:
+
+  # ── CATÁLOGO DE PRODUCTOS ──────────────────────────────────────────────────
+  - label: "Catálogo de productos"
+    name: "catalogo"
+    files:
+      - label: "Todos los productos"
+        name: "productos"
+        file: "_data/productos.json"
+        fields:
+          - label: "Productos"
+            name: "productos"
+            widget: list
+            summary: "{{fields.nombre}} · {{fields.categoria}} · {{fields.metal}}"
+            fields:
+              - label: "ID (número único, no repetir)"
+                name: id
+                widget: number
+                value_type: int
+                min: 1
+              - label: "Nombre del producto"
+                name: nombre
+                widget: string
+              - label: "Categoría"
+                name: categoria
+                widget: select
+                options:
+                  - { label: "Cadenas",   value: "cadenas"   }
+                  - { label: "Anillos",   value: "anillos"   }
+                  - { label: "Candongas", value: "candongas" }
+                  - { label: "Topos",     value: "topos"     }
+                  - { label: "Dijes",     value: "dijes"     }
+                  - { label: "Pulsos",    value: "pulsos"    }
+              - label: "Género"
+                name: genero
+                widget: select
+                options:
+                  - { label: "Mujer",  value: "mujer"  }
+                  - { label: "Hombre", value: "hombre" }
+                  - { label: "Unisex", value: "unisex" }
+              - label: "Metal"
+                name: metal
+                widget: select
+                default: "plata"
+                options:
+                  - { label: "Plata", value: "plata" }
+                  - { label: "Oro",   value: "oro"   }
+              - label: "Precio en COP (0 = precio oculto)"
+                name: precio
+                widget: number
+                value_type: int
+                default: 0
+                min: 0
+              - label: "Material (descripción breve)"
+                name: material
+                widget: string
+                required: false
+                default: ""
+              - label: "Referencia interna"
+                name: referencia
+                widget: string
+                required: false
+                default: ""
+              - label: "Descripción del producto"
+                name: descripcion
+                widget: text
+                required: false
+                default: ""
+              - label: "Fotos (primera foto = foto principal)"
+                name: imagenes
+                widget: list
+                hint: "Escribe el nombre exacto del archivo. Ej: anillo-bianca.jpeg — la foto debe estar en la carpeta img/productos/"
+              - label: "Destacado en portada"
+                name: destacado
+                widget: boolean
+                default: false
+                hint: "Activa esta opción para que aparezca en la sección de destacados en la página de inicio"
+
+  # ── CONFIGURACIÓN DEL NEGOCIO ──────────────────────────────────────────────
+  - label: "Configuración del negocio"
+    name: "configuracion"
+    files:
+      - label: "Datos generales"
+        name: "config"
+        file: "_data/config.json"
+        fields:
+          - label: "WhatsApp (sin + ni espacios)"
+            name: whatsapp
+            widget: string
+            hint: "Ej: 573022894500 — incluye el código de país 57"
+          - label: "Correo electrónico"
+            name: correo
+            widget: string
+          - label: "Nombre de la línea Joyería"
+            name: nombreLineaAtelier
+            widget: string
+          - label: "Nombre de la línea Alta Joyería"
+            name: nombreLineaAlta
+            widget: string
+          - label: "Slogan de la marca"
+            name: slogan
+            widget: string
+          - label: "Texto del pie de página"
+            name: lemaPie
+            widget: text
+          - label: "Avisos de la franja superior (rotación automática)"
+            name: avisos
+            widget: list
+            hint: "Puedes resaltar palabras clave con <em>texto</em>"
+          - label: "Redes sociales"
+            name: redes
+            widget: object
+            collapsed: false
+            fields:
+              - label: "TikTok (URL completa)"
+                name: tiktok
+                widget: string
+                required: false
+              - label: "Facebook (URL completa)"
+                name: facebook
+                widget: string
+                required: false
+              - label: "Instagram (URL completa)"
+                name: instagram
+                widget: string
+                required: false
+          - label: "Guías de medidas (nombres de archivo en img/referencias/)"
+            name: guiasMedidas
+            widget: object
+            collapsed: true
+            fields:
+              - label: "Cadenas"
+                name: cadenas
+                widget: object
+                fields:
+                  - { label: "Imagen para hombre", name: hombre, widget: string }
+                  - { label: "Imagen para mujer",  name: mujer,  widget: string }
+
+  # ── GUÍA LUAR JOYAS (FAQ) ──────────────────────────────────────────────────
+  - label: "Guía Luar Joyas (preguntas frecuentes)"
+    name: "guia"
+    files:
+      - label: "Preguntas y respuestas"
+        name: "guia"
+        file: "_data/guia.json"
+        fields:
+          - label: "Secciones"
+            name: secciones
+            widget: list
+            summary: "{{fields.seccion}}"
+            fields:
+              - label: "Nombre de la sección"
+                name: seccion
+                widget: string
+              - label: "Preguntas"
+                name: items
+                widget: list
+                summary: "{{fields.pregunta}}"
+                fields:
+                  - label: "Pregunta"
+                    name: pregunta
+                    widget: string
+                  - label: "Respuesta"
+                    name: respuesta
+                    widget: text
+                    hint: "Usa saltos de línea normales para separar párrafos"

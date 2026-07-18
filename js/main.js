@@ -584,13 +584,28 @@ function iniciarIntro() {
 /* ---------- arranque ---------- */
 
 document.addEventListener("DOMContentLoaded", function () {
-  iniciarIntro();
-  iniciarBase();
-  iniciarCategoriasInicio();
-  iniciarDestacados();
-  iniciarCatalogo();
-  iniciarDetalle();
-  iniciarFaq();
-  iniciarGaleria();
-  observarReveles();
+  iniciarIntro(); // no necesita datos del catálogo
+
+  Promise.all([
+    fetch("_data/config.json").then(function (r) { return r.json(); }),
+    fetch("_data/productos.json").then(function (r) { return r.json(); }),
+    fetch("_data/guia.json").then(function (r) { return r.json(); }),
+    fetch("_data/categorias.json").then(function (r) { return r.json(); })
+  ]).then(function (datos) {
+    window.CONFIG     = datos[0];
+    window.PRODUCTOS  = datos[1].productos;
+    window.GUIA       = datos[2].secciones;
+    window.CATEGORIAS = datos[3];
+
+    iniciarBase();
+    iniciarCategoriasInicio();
+    iniciarDestacados();
+    iniciarCatalogo();
+    iniciarDetalle();
+    iniciarFaq();
+    iniciarGaleria();
+    observarReveles();
+  }).catch(function (err) {
+    console.error("LUAR JOYAS — error cargando datos:", err);
+  });
 });

@@ -1,0 +1,98 @@
+{
+  "secciones": [
+    {
+      "seccion": "Materiales y Calidad",
+      "items": [
+        {
+          "pregunta": "¿Qué materiales utilizan en Luar Joyas?",
+          "respuesta": "Cada pieza es elaborada en oro de 18 quilates (18K) o plata ley 925, metales preciosos reconocidos por su belleza, resistencia y valor. Seleccionamos materiales de alta calidad para crear joyas destinadas a perdurar."
+        },
+        {
+          "pregunta": "¿Qué es el oro de 18K?",
+          "respuesta": "El oro de 18K está compuesto por un 75 % de oro puro y un 25 % de otros metales que aportan mayor resistencia. Es uno de los estándares más valorados en la alta joyería por su equilibrio entre lujo y durabilidad."
+        },
+        {
+          "pregunta": "¿Qué es la plata ley 925?",
+          "respuesta": "La plata ley 925 contiene un 92,5 % de plata pura, garantizando una joya fina, resistente y con el brillo característico de la plata auténtica."
+        },
+        {
+          "pregunta": "¿Qué es la Alta Joyería?",
+          "respuesta": "La alta joyería representa la excelencia del arte joyero. Combina metales preciosos, piedras de calidad excepcional y un proceso artesanal donde cada detalle es trabajado con precisión para crear piezas únicas y atemporales."
+        }
+      ]
+    },
+    {
+      "seccion": "Personalización",
+      "items": [
+        {
+          "pregunta": "¿Diseñan joyas personalizadas?",
+          "respuesta": "Cada historia merece una joya única.\nCreamos piezas exclusivas a partir de tus ideas, recuerdos o momentos especiales. Podemos incorporar nombres, iniciales, fechas, piedras preciosas o desarrollar un diseño completamente nuevo junto a ti."
+        },
+        {
+          "pregunta": "¿Fabrican joyas a la medida?",
+          "respuesta": "Cada pieza puede adaptarse a las necesidades de quien la llevará. Ajustamos medidas y detalles para lograr una joya cómoda, armónica y personalizada."
+        },
+        {
+          "pregunta": "¿Realizan anillos de compromiso y argollas de matrimonio?",
+          "respuesta": "Diseñamos anillos de compromiso y argollas totalmente personalizadas para representar uno de los momentos más importantes de la vida."
+        }
+      ]
+    },
+    {
+      "seccion": "Guías",
+      "items": [
+        {
+          "pregunta": "Guía de tallas para anillos",
+          "respuesta": "Para conocer tu talla puedes:\n• Medir el diámetro interno de un anillo que utilices habitualmente.\n• Rodear tu dedo con una tira de papel, marcar el punto donde se unen los extremos y medir la longitud obtenida.\nCon esta información podrás consultar nuestra guía de tallas o recibir asesoría personalizada por parte de nuestro equipo."
+        },
+        {
+          "pregunta": "Guía de longitudes para cadenas",
+          "respuesta": "40 cm – Choker o ajustada al cuello.\n45 cm – Largo clásico.\n50 cm – A la altura de la clavícula.\n55 cm – Sobre el pecho.\n60 cm – Largo elegante.\nTambién fabricamos cadenas en medidas especiales bajo solicitud."
+        }
+      ]
+    },
+    {
+      "seccion": "Compras y Envíos",
+      "items": [
+        {
+          "pregunta": "Envíos",
+          "respuesta": "Realizamos envíos seguros a cualquier ciudad o municipio de Colombia mediante transportadoras aliadas."
+        },
+        {
+          "pregunta": "Tiempo de entrega",
+          "respuesta": "Las joyas disponibles en inventario se despachan en el menor tiempo posible.\nLas piezas personalizadas o fabricadas bajo pedido requieren un tiempo adicional de producción, el cual será informado al confirmar la compra."
+        },
+        {
+          "pregunta": "Métodos de pago",
+          "respuesta": "Aceptamos pagos mediante:\n• Bancolombia\n• Davivienda\n• Banco de Bogotá\n• Nequi\n• Daviplata"
+        }
+      ]
+    },
+    {
+      "seccion": "Garantía y Certificados",
+      "items": [
+        {
+          "pregunta": "Garantía LUAR Joyas",
+          "respuesta": "Cada joya está respaldada por nuestro compromiso con la calidad.\n• Garantía de por vida sobre la autenticidad y pureza del oro 18K y la plata ley 925.\n• Un (1) año de garantía por defectos de fabricación.\nLa garantía no cubre daños ocasionados por golpes, rayones, caídas, modificaciones realizadas por terceros ni desgaste derivado del uso normal."
+        },
+        {
+          "pregunta": "Certificado de autenticidad",
+          "respuesta": "Cada joya se entrega con un Certificado de Autenticidad Luar Joyas, donde se garantiza la pureza del metal utilizado.\nCuando la pieza incorpora piedras preciosas, se entrega además el certificado emitido por una institución gemológica autorizada, según corresponda."
+        }
+      ]
+    },
+    {
+      "seccion": "Cuidado de las Joyas",
+      "items": [
+        {
+          "pregunta": "¿Cómo conservar el brillo de mi joya?",
+          "respuesta": "Para preservar su belleza recomendamos:\n• Evitar el contacto con perfumes, cremas, cloro y productos químicos.\n• Guardarla en un lugar seco y protegida cuando no esté en uso.\n• Limpiarla periódicamente con un paño especial para joyería.\n• Retirarla durante actividades que puedan ocasionar golpes o desgaste."
+        },
+        {
+          "pregunta": "Servicio de mantenimiento",
+          "respuesta": "También ofrecemos servicios de limpieza, pulido, restauración y reparación para ayudar a conservar tus joyas en excelentes condiciones con el paso del tiempo."
+        }
+      ]
+    }
+  ]
+}
