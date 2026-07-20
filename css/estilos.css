@@ -674,6 +674,17 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 }
 .producto:hover .producto__marco img { transform: scale(1.05); }
 
+/* Piezas horizontales (pulsos, cadenas): se muestran completas sin recorte.
+   Fondo blanco para que coincida con el fondo de las fotos de producto. */
+.producto--pulsos .producto__marco,
+.producto--cadenas .producto__marco { background: #fff; }
+.producto--pulsos .producto__marco img,
+.producto--cadenas .producto__marco img {
+  object-fit: contain;
+  box-sizing: border-box;
+  padding: 14px 18px;
+}
+
 /* espacio elegante mientras no hay foto */
 .producto__pendiente {
   position: absolute;
@@ -855,6 +866,16 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
 }
 .detalle__foto { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+/* Piezas horizontales: foto completa sobre fondo blanco, sin recorte */
+.detalle--pulsos .detalle__marco,
+.detalle--cadenas .detalle__marco { background: #fff; }
+.detalle--pulsos .detalle__foto,
+.detalle--cadenas .detalle__foto {
+  object-fit: contain;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
 /* miniaturas: solo aparecen cuando el producto tiene más de una foto */
 .detalle__thumbs {
   display: flex;
@@ -872,6 +893,10 @@ html.intro-activa body { overflow: hidden; height: 100vh; }
   transition: border-color var(--transicion);
 }
 .detalle__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.detalle--pulsos .detalle__thumb,
+.detalle--cadenas .detalle__thumb { background: #fff; }
+.detalle--pulsos .detalle__thumb img,
+.detalle--cadenas .detalle__thumb img { object-fit: contain; box-sizing: border-box; padding: 6px; }
 .detalle__thumb:hover { border-color: var(--linea-oro); }
 .detalle__thumb.activo { border-color: var(--oro); }
 

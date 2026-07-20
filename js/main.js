@@ -60,7 +60,7 @@ var ICONO_WSP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 1
 
 function tarjetaProducto(p) {
   var articulo = document.createElement("article");
-  articulo.className = "producto revela";
+  articulo.className = "producto producto--" + p.categoria + " revela";
 
   var imagen = imagenPrincipal(p);
   var precio = formatearPrecio(p.precio);
@@ -133,6 +133,10 @@ function pintarDetalle() {
       '</div>';
     return;
   }
+
+  // Marca la categoría en el contenedor para ajustar el encuadre de la foto
+  // (piezas horizontales como pulsos y cadenas se muestran completas)
+  contenedor.classList.add("detalle--" + producto.categoria);
 
   // Actualiza el título y las meta descripciones para que el link
   // compartido por WhatsApp muestre el nombre de la pieza
