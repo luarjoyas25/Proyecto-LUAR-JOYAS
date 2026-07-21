@@ -572,21 +572,6 @@
     },
     {
       "imagenes": [
-        "topos-virgen-guadalupe.avif"
-      ],
-      "precio": 0,
-      "material": "",
-      "metal": "plata",
-      "destacado": false,
-      "nombre": "Topos Virgen de Guadalupe",
-      "descripcion": "",
-      "genero": "mujer",
-      "referencia": "",
-      "categoria": "topos",
-      "id": 39
-    },
-    {
-      "imagenes": [
         "topo-corazon-piedra-circon.avif"
       ],
       "precio": 0,
