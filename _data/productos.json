@@ -310,7 +310,7 @@
       "destacado": false,
       "nombre": "Dije Avión",
       "descripcion": "",
-      "genero": "unisex",
+      "genero": "mujer",
       "referencia": "",
       "categoria": "dijes",
       "id": 21
@@ -325,7 +325,7 @@
       "destacado": true,
       "nombre": "Dije Corazón",
       "descripcion": "",
-      "genero": "unisex",
+      "genero": "mujer",
       "referencia": "",
       "categoria": "dijes",
       "id": 22
@@ -340,7 +340,7 @@
       "destacado": false,
       "nombre": "Dije Cruz con Circones Blancos",
       "descripcion": "",
-      "genero": "unisex",
+      "genero": "mujer",
       "referencia": "",
       "categoria": "dijes",
       "id": 23
@@ -355,7 +355,7 @@
       "destacado": false,
       "nombre": "Dije Cruz",
       "descripcion": "",
-      "genero": "unisex",
+      "genero": "mujer",
       "referencia": "",
       "categoria": "dijes",
       "id": 24
@@ -370,7 +370,7 @@
       "destacado": false,
       "nombre": "Dije Hoja de Árbol",
       "descripcion": "",
-      "genero": "unisex",
+      "genero": "mujer",
       "referencia": "",
       "categoria": "dijes",
       "id": 25
@@ -535,7 +535,7 @@
       "destacado": false,
       "nombre": "Topo Balín Diamantado",
       "descripcion": "",
-      "genero": "unisex",
+      "genero": "mujer",
       "referencia": "",
       "categoria": "topos",
       "id": 36
@@ -565,7 +565,7 @@
       "destacado": false,
       "nombre": "Topos de Tortuga",
       "descripcion": "",
-      "genero": "unisex",
+      "genero": "mujer",
       "referencia": "",
       "categoria": "topos",
       "id": 38
@@ -580,7 +580,7 @@
       "destacado": false,
       "nombre": "Topos Virgen de Guadalupe",
       "descripcion": "",
-      "genero": "unisex",
+      "genero": "mujer",
       "referencia": "",
       "categoria": "topos",
       "id": 39
@@ -595,7 +595,7 @@
       "destacado": false,
       "nombre": "Topo Corazón con Piedra Circón",
       "descripcion": "",
-      "genero": "unisex",
+      "genero": "mujer",
       "referencia": "",
       "categoria": "topos",
       "id": 40
